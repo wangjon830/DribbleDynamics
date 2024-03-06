@@ -1,0 +1,33 @@
+{
+    "success": true,
+    "payload": {
+        "size": 3,
+        "page": 1,
+        "teams" : [
+            {
+                "id":"t1",
+                "name": "Los Angeles Lakers",
+                "abbreviation": "LAL",
+                "founded": "1948",
+                "conference": "Western",
+                "championships": 17
+            },
+            {
+                "id":"t2",
+                "name": "Chicago Bulls",
+                "abbreviation": "CHI",
+                "founded": "1966",
+                "conference": "Eastern",
+                "championships": 6
+            },
+            {
+                "id":"t3",
+                "name": "Denver Nuggets",
+                "abbreviation": "DEN",
+                "founded": "1976",
+                "conference": "Western",
+                "championships": 1
+            }
+        ]
+    }
+}

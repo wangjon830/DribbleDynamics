@@ -1,0 +1,38 @@
+.nav-main {
+    position: sticky;
+    top: 0px;
+    z-index: 1000;
+    background-color: white;
+    height: 10vh;
+    min-height: 50px;
+}
+
+.nav-link {
+    position: relative;
+    text-decoration: none;
+    height: 100%;
+}
+
+.nav-link:hover {
+    background-color: rgba(0,0,0, 0.05);
+    font-weight: bolder;
+}
+
+.nav-text {
+    text-align: left;
+    position: absolute;
+    color:#000
+}
+
+.nav-main-text {
+    font-size: 25px;
+    bottom: -12.5px;
+    left: calc(10%);
+}
+
+.nav-sub-text {
+    font-size: 20px;
+    left: calc(50%);
+    transform: translateX(-50%);
+    bottom: -5px;
+}

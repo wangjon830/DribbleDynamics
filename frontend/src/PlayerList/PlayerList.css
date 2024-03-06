@@ -1,0 +1,96 @@
+.searchBar {
+    padding: 10px 20px 10px 20px;
+}
+
+.searchBar input[type=text]{
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    font-size: 17px;
+}
+
+.searchBar select {
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    font-size: 17px;
+}
+
+.searchBar button[type=submit]{
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+}
+
+.searchBar button:hover {
+    background: #ccc;
+  }
+
+.listHeader {
+    background-color: rgb(0, 0, 0, 0.05);
+    width: 100%;
+    padding: 10px 20px 0px 20px;
+}
+
+.listHeader h3 {
+    margin: 5px 0px 0px 0px;
+}
+
+.listHeader hr {
+    border-color: rgba(0,0,0,0.5);
+}
+
+.listContainer {
+    background-color: rgb(0, 0, 0, 0.05);
+    width: 100%;
+    padding: 10px 20px 10px 20px;
+}
+
+.playerItemContainer {
+    border: 1px solid black;
+    margin: 5px 0px 5px 0px;
+    padding: 10px;
+    text-decoration: none;
+    color: rgb(44, 44, 44);
+    background-color: rgb(0, 0, 0, 0.05);
+}
+
+.playerItemContainer:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.playerHeadshotContainer {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 70px;
+    width: 70px;
+}
+
+.playerHeadshotContainer img {
+    height: auto;
+    width: auto;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.playerName {
+    float:left;
+    text-align: left;
+    font-size: 20px;
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+}
+
+.playerColumn {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

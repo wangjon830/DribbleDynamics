@@ -1,0 +1,89 @@
+.banner {
+    padding: 40px;
+}
+
+.bannerProfile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.bannerStatContainer {
+    padding-top: 30px;
+}
+
+.bannerStatRow {
+    padding: 0px 2vw 30px 2vw;
+}
+
+.bannerCareer {
+    padding: 0px 2vw 0px 2vw;
+}
+
+.bannerCareer p{
+    font-style: italic;
+    font-size: 20px;
+}
+
+.bannerMainStats {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.bannerMainStats h2 {
+    font-size: 6vw;
+    margin:0;
+}
+
+.bannerMainStats p {
+    font-size: 3vw;
+    font-weight: 100;
+    font-style: italic;
+    margin: 0;
+}
+
+.bannerSubStatsContainer {
+    border: 1px solid;
+    width: 100%;
+    min-height: 150px;
+    padding: 0px 20px 0px 20px;
+    margin: 0 2vw 0 2vw;
+}
+
+.bannerSubStatsContainer p {
+    font-size: 1.5vw;
+}
+
+.playerBannerName h1{
+    font-size: 3vw;
+    margin:0;
+}
+
+.circleImgContainer {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 100%;
+    border: 1px solid;
+    margin: 10px;
+}
+
+.circleImgContainer img {
+    height: auto;
+    width: auto;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.playerImg {
+    width: 25vw;
+    height: 25vw;
+}

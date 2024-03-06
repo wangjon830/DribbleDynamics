@@ -1,0 +1,40 @@
+{
+    "success": true,
+    "payload": {
+        "id":"p1",
+        "name":"LeBron James",
+        "career_ppg": 27.1,
+        "career_apg": 7.4,
+        "career_rpg": 7.5,
+        "career_spg": 1.5,
+        "career_bpg": 0.7,
+        "career_tpg": 3.5,
+        "career_fgper": 50.5,
+        "career_fg3per": 34.7,
+        "career_ftper": 73.5,
+        "stat_prog":[
+            "Points"
+        ],
+        "games_per":[
+            "Points"
+        ],
+        "game_pbp":[
+            "LAL @ BKN 3/4"
+        ],
+        "radar_chart":{
+            "pts": 95,
+            "reb": 80,
+            "stl": 50,
+            "blk": 80,
+            "3p": 60,
+            "fg%": 75,
+            "ast": 90
+        },
+        "similar_players_stat1":[
+            "Points"
+        ],
+        "similar_players_stat2":[
+            "Rebounds"
+        ]
+    }
+}

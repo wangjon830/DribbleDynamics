@@ -1,0 +1,33 @@
+{
+    "success": true,
+    "payload": {
+        "size":3,
+        "page":1,
+        "players":[
+            {
+                "id":"p1",
+                "name": "LeBron James",
+                "teams": ["CLE", "LAL", "MIA"],
+                "start_season": "2003",
+                "end_season": "Present",
+                "status": "Active"
+            },
+            {
+                "id":"p2",
+                "name": "Michael Jordan",
+                "teams": ["CHI","WAS"],
+                "start_season": "1984",
+                "end_season": "2003",
+                "status": "Retired"
+            },
+            {
+                "id":"p3",
+                "name": "Nikola Jokic",
+                "teams": ["DEN"],
+                "start_season": "2015",
+                "end_season": "Present",
+                "status": "Active"
+            }
+        ]
+    }
+}
