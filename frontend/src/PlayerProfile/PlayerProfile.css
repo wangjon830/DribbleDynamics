@@ -1,5 +1,7 @@
 .banner {
     padding: 40px;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
 
 .bannerProfile {
@@ -86,4 +88,58 @@
 .playerImg {
     width: 25vw;
     height: 25vw;
+}
+
+.graphSelectorMain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.graphSelectorMain button{
+    padding: 6px;
+    border: 1px solid;
+    font-size: 20px;
+    height: 40px;
+}
+
+.graphSelectorMain button:hover{
+    background-color: rgba(0,0,0,0.05);
+}
+
+.playerGraphContainer {
+    height: 85vh;
+    width: 100vw;
+    margin: 10px 5vw 10px 5vw;
+    background-color: aliceblue;
+}
+
+.playerProgressionGraphContainer {
+    height: 100%;
+}
+
+.playerProgressionLegendContainer {
+    height: 50%;
+}
+
+.playerProgressionHistogramContainer {
+    height: 50%;
+}
+
+.graphComponent {
+    width: 100%;
+    height: 100%;
+}
+
+.careerLegendItem {
+    padding: 5px 0px 5px 0px;
+}
+.careerLegendName {
+    width: 15%;
+}
+
+.careerLegendColor {
+    width: 20px;
+    height: 20px;
 }

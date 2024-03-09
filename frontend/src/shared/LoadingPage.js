@@ -3,7 +3,7 @@ import '../shared/App.css'
 
 function LoadingPage() {
   return (
-    <div className='App-page'>
+    <div>
         <h1>Loading...</h1>
     </div>
   );

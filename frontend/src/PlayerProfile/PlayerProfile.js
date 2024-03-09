@@ -3,9 +3,7 @@ import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
 import PlayerBanner from './PlayerBanner';
-import PlayerProgression from './PlayerProgression';
-import PlayerPBP from './PlayerPBP';
-import PlayerSimilar from './PlayerSimilar';
+import PlayerGraphSelector from './PlayerGraphSelector';
 import LoadingPage from '../shared/LoadingPage';
 import ErrorPage from '../shared/ErrorPage';
 
@@ -37,13 +35,10 @@ function PlayerProfile() {
     if (loading) return <LoadingPage />;
     if (error) return <ErrorPage />;
 
-    console.log(playerData)
     return (
-        <div className='App-page container'>
+        <div className='App-page'>
           <PlayerBanner data={playerData} />
-          <PlayerProgression data={playerData} />
-          <PlayerPBP data={playerData} />
-          <PlayerSimilar data={playerData} />
+          <PlayerGraphSelector data={playerData}/>
         </div>
     );
 }

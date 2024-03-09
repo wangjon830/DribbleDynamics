@@ -12,11 +12,10 @@
         "career_fgper": 50.5,
         "career_fg3per": 34.7,
         "career_ftper": 73.5,
-        "stat_prog":[
-            "Points"
-        ],
-        "games_per":[
-            "Points"
+        "career_stats":[
+            "Points",
+            "Rebounds",
+            "Assists"
         ],
         "game_pbp":[
             "LAL @ BKN 3/4"
@@ -29,12 +28,6 @@
             "3p": 60,
             "fg%": 75,
             "ast": 90
-        },
-        "similar_players_stat1":[
-            "Points"
-        ],
-        "similar_players_stat2":[
-            "Rebounds"
-        ]
+        }
     }
 }

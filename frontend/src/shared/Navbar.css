@@ -1,9 +1,12 @@
-.nav-main {
+.sticky {
     position: sticky;
     top: 0px;
-    z-index: 1000;
     background-color: white;
-    height: 10vh;
+    z-index: 1000;
+}
+
+.nav-main {
+    height: 8vh;
     min-height: 50px;
 }
 
@@ -21,18 +24,22 @@
 .nav-text {
     text-align: left;
     position: absolute;
-    color:#000
+    color:#000;
+    text-align: center;
 }
 
 .nav-main-text {
-    font-size: 25px;
+    font-size: 20px;
+    font-weight: 800;
+    left: calc(50%);
+    transform: translateX(-50%);
     bottom: -12.5px;
-    left: calc(10%);
 }
 
 .nav-sub-text {
     font-size: 20px;
+    font-weight: 600;
     left: calc(50%);
     transform: translateX(-50%);
-    bottom: -5px;
+    bottom: -12.5px;
 }

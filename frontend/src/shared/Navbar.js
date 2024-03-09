@@ -4,16 +4,17 @@ import '../shared/Navbar.css';
 
 function Navbar() {
   return (
-    <div className='container'>
+    <div className='container sticky'>
         <div className="nav-main row">
-            <Link id='navHome' className='col-2 nav-link' to="/">
-                <div className='nav-text nav-main-text'>
-                    <p>Dribble <br /> Dynamics</p>
-                </div>
-            </Link>
+            <div className='col-4' />
             <Link id='navPlayers' className='col-1 nav-link' to="/playerList">
                 <div className='nav-text nav-sub-text'>
                     <p>Players</p>
+                </div>
+            </Link>
+            <Link id='navHome' className='col-2 nav-link' to="/">
+                <div className='nav-text nav-main-text'>
+                    <p>Dribble <br /> Dynamics</p>
                 </div>
             </Link>
             <Link id='navTeams' className='col-1 nav-link' to="/teamList">
@@ -21,7 +22,7 @@ function Navbar() {
                     <p>Teams</p>
                 </div>
             </Link>
-            <div className='col-9' />
+            <div className='col-4' />
         </div>
     </div>
   );

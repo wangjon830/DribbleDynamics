@@ -3,8 +3,8 @@ import '../shared/App.css'
 
 function ErrorPage() {
   return (
-    <div className='App-page'>
-        <h1>Error loading data</h1>
+    <div>
+        <h1>Error Data Unavailable</h1>
     </div>
   );
 }
