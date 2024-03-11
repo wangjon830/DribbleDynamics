@@ -1,0 +1,36 @@
+{
+    "success":true,
+    "payload": {
+        "gameList": [
+            {"name": "BKN @ LAL 2/15", "id": 1},
+            {"name":"CLE @ LAL 3/15", "id": 2}
+        ],
+        "gameInfo": {
+            "1": {
+                "shots": [
+                    {"x":-396, "y": -280, "time":"30", "miss":false, "score":[2,0], "distance": 20, "type":"3"},
+                    {"x":-396, "y": -280, "time":"2000", "miss":false, "score":[4,0], "distance": 22, "type":"3"},
+                    {"x":-396, "y": 280, "time":"750", "miss":false, "score":[6,0], "distance": 23, "type":"3"},
+                    {"x":396, "y": 280, "time":"1470", "miss":true, "score":[6,0], "distance": 25, "type":"3"},
+                    {"x":396, "y": -280, "time":"2190", "miss":false, "score":[8,0], "distance": 21, "type":"3"}
+                ],
+                "finalScore": [10, 0],
+                "overtimes":1,
+                "teams": ["LAL", "BKN"],
+                "date": "2/15"
+            },
+            "2": {
+                "shots": [
+                    {"x":-284, "y": 0, "time":"30", "miss":false, "score":[2,0], "distance": 20, "type":"2"},
+                    {"x":-450, "y": 0, "time":"750", "miss":false, "score":[4,0], "distance": 20, "type":"2"},
+                    {"x":284, "y": 0, "time":"1470", "miss":true, "score":[4,0], "distance": 20, "type":"2"},
+                    {"x":450, "y": 0, "time":"2190", "miss":false, "score":[6,0], "distance": 20, "type":"2"}
+                ],
+                "finalScore": [8, 0],
+                "overtimes":2,
+                "teams": ["LAL", "BKN"],
+                "date": "3/15"
+            }
+        }
+    }
+}

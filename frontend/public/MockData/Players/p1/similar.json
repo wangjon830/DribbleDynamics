@@ -1,0 +1,10 @@
+{
+    "success": true,
+    "payload": {
+        "stats": [
+            "ppg",
+            "rpg",
+            "apg"
+        ]
+    }
+}

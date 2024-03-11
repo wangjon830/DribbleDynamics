@@ -37,7 +37,7 @@ function PlayerProfile() {
 
     return (
         <div className='App-page'>
-          <PlayerBanner data={playerData} />
+          <PlayerBanner id="banner" data={playerData}/>
           <PlayerGraphSelector data={playerData}/>
         </div>
     );

@@ -9,13 +9,13 @@ import PlayerProfile from './PlayerProfile/PlayerProfile';
 function App() {
   return (
     <BrowserRouter>
-        <Navbar />
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/playerList" element={<PlayerList />} />
-            <Route path="/teamList" element={<TeamList />} />
-            <Route path="/playerProfile/:playerId" element={<PlayerProfile />} />
-        </Routes>
+      <Navbar />
+      <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/playerList" element={<PlayerList />} />
+          <Route path="/teamList" element={<TeamList />} />
+          <Route path="/playerProfile/:playerId" element={<PlayerProfile />} />
+      </Routes>
     </BrowserRouter>
   );
 }

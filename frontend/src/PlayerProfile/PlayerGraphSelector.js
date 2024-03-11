@@ -7,6 +7,7 @@ import PlayerPBP from './PlayerPBP';
 import PlayerSimilar from './PlayerSimilar';
 
 function PlayerGraphSelector({data}) {
+
   // State to track the active component
   const [activeComponent, setActiveComponent] = useState('PlayerProgression');
 
@@ -26,14 +27,26 @@ function PlayerGraphSelector({data}) {
 
   return (
     <div className=''>
-    <div className='row graphSelectorMain'>
-      <button onClick={() => setActiveComponent('PlayerProgression')}>Career Progression</button>
-      <button onClick={() => setActiveComponent('PlayerPBP')}>Play by Play</button>
-      <button onClick={() => setActiveComponent('PlayerSimilar')}>Similar Players</button>
-    </div>
-    <div className='row'>
-        {renderComponent()}
+      <div id="graphSelector" className='row graphSelectorMain'>
+        <button 
+          className={activeComponent === 'PlayerProgression' ? "active" : "inactive"}
+          onClick={() => setActiveComponent('PlayerProgression')}>
+            Career Progression
+        </button>
+        <button 
+          className={activeComponent === 'PlayerPBP' ? "active" : "inactive"}
+          onClick={() => setActiveComponent('PlayerPBP')}>
+            Play by Play
+        </button>
+        <button 
+          className={activeComponent === 'PlayerSimilar' ? "active" : "inactive"}
+          onClick={() => setActiveComponent('PlayerSimilar')}>
+            Similar Players
+        </button>
       </div>
+      <div className='row'>
+          {renderComponent()}
+        </div>
     </div>
 
   );

@@ -13,7 +13,7 @@ function PlayerBanner({data}) {
               <h1>{data.name}</h1>
             </div>
           </div>
-          <div className='col-9 bannerStatContainer'>
+          <div id="careerBanner" className='col-9 bannerStatContainer'>
             <div className='row'>
               <div className='bannerCareer'>
                 <p>

@@ -1,12 +1,56 @@
 import '../shared/App.css';
 import './PlayerProfile.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 
 import React, { useRef, useState, useEffect } from 'react';
 import * as d3 from 'd3';
+import Joyride from 'react-joyride';
+
 import LoadingPage from '../shared/LoadingPage';
 import ErrorPage from '../shared/ErrorPage';
 
 function PlayerProgression({data}) {
+    // Joyride
+    const [runTour, setRunTour] = useState(false);
+    const steps = [
+      {
+        target: '#statSelect',
+        content: "Select which stats you'd like to visualize"
+      },
+      {
+        target: '#statLegend',
+        content: "Your chosen stats will be assigned a color in the graphs"
+      },
+      {
+        target: '#progressionGraphOverlay',
+        content: "View your player's corresponding career stat progressions on the graph"
+      },
+      {
+        target: '#progressionBrushOverlay',
+        content: "Select a desired range of seasons to view on the graph"
+      },
+      {
+        target: '#progressionHistogram',
+        content: "See your player's game distribution of performances per stat over the selected seasons"
+      }
+    ]
+    const startTour = () => {
+      setRunTour(true);
+    };
+    const stopTour = () => {
+      setRunTour(false);
+    };
+    // Callback function to handle Joyride events
+    const handleJoyrideCallback = (data) => {
+      const { status } = data;
+      const finishedStatuses = ['finished', 'skipped'];
+
+      if (finishedStatuses.includes(status)) {
+        stopTour();
+      }
+    };
+
     const lineContainer = useRef(null);
     const histogramContainer = useRef(null);
     const [careerAverages, setPoints] = useState(null);
@@ -191,7 +235,12 @@ function PlayerProgression({data}) {
               d3.select(this).attr("r", 8); // Enlarge on hover
               g.append("text")
                 .attr("x", x(new Date(d.season, 0)))
-                .attr("y", y(d[stat]) - 10)
+                .attr("y", y(d[stat]) - 35)
+                .attr("class", "tooltip")
+                .text(`Season: ${d.season}`);
+              g.append("text")
+                .attr("x", x(new Date(d.season, 0)))
+                .attr("y", y(d[stat]) - 15)
                 .attr("class", "tooltip")
                 .text(`${stat}: ${d[stat]}`);
             })
@@ -442,7 +491,7 @@ function PlayerProgression({data}) {
                   .attr("x", x(bucket.rangeStart) + 1)
                   .attr("y", y(statData.count) - 10)
                   .attr("class", "tooltip")
-                  .text(`${statData.count}`);
+                  .text(`${statData.count} games`);
               })
               .on("mouseout", function(event, d) {
                 d3.select(this)
@@ -460,18 +509,34 @@ function PlayerProgression({data}) {
     if (error) return <div className='row playerGraphContainer'><ErrorPage /></div>;
     return (
         <div className='row playerGraphContainer'>
+          <Joyride 
+            steps={steps}
+            run={runTour}
+            continuous={true}
+            showProgress={true}
+            showSkipButton={true}
+            callback={handleJoyrideCallback}
+            styles={{
+              options: {
+                zIndex: 10000, // Make sure Joyride renders above your content
+              },
+            }}
+          />
           <div className='col-6 playerProgressionGraphContainer'>
+            <div id="progressionGraphOverlay"/>
+            <div id="progressionBrushOverlay"/>
             <svg
+              id="progressionGraph"
               className='graphComponent'
               ref={lineContainer}
             />
           </div>
           <div className='col-4'>
             <div className='row playerProgressionLegendContainer'>
-            <div className='col-1'>
+              <div id="statLegend" className='col-1 playerProgressionLegendBox'>
                 <h3>Legend:</h3>
                 {legend.map(option => (
-                  <div className='row careerLegendItem'>
+                  <div key={option.stat} className='row careerLegendItem'>
                     <div className='careerLegendName'>
                       {option.stat}: 
                     </div>
@@ -480,7 +545,10 @@ function PlayerProgression({data}) {
                   </div>
                 ))}
               </div>
-              <div className='col-1'>
+              <div id='statSelect' className='col-1 playerProgressionLegendBox'>
+                <div id='progressionJoyride' className='joyrideIcon' onClick={startTour}>
+                  <FontAwesomeIcon className='joyrideIcon' icon={faCircleQuestion} />
+                </div>
                 <h3>Select Stats:</h3>
                 <form>
                 {possibleStats.map(option => (
@@ -501,6 +569,7 @@ function PlayerProgression({data}) {
             </div>
             <div className='row playerProgressionHistogramContainer'>
               <svg
+                id='progressionHistogram'
                 className='graphComponent'
                 ref={histogramContainer}
               />

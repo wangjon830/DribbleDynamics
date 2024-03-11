@@ -1,5 +1,6 @@
 import '../shared/App.css';
 import './Home.css';
+import React from 'react';
 
 function Home() {
   return (

@@ -43,3 +43,38 @@
     transform: translateX(-50%);
     bottom: -12.5px;
 }
+
+.nav-icon {
+    font-size: 25px;
+    left: calc(50%);
+    transform: translateX(-50%);
+    bottom: 5px;
+}
+
+.info-menu {
+    width: 200%;
+    height: auto;
+    background-color: rgb(240, 240, 240);
+    border-color: black;
+    border-width: 1px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    position: absolute;
+    top: 100%;
+    left:-50%;
+    padding: 10px;
+}
+
+.info-menu .title {
+    font-size: 20px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.info-menu .term {
+    font-size: 15px;
+    font-weight: 400;
+    margin: 5px;
+}

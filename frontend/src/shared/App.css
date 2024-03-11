@@ -1,6 +1,6 @@
 .App-page {
   background-color: rgba(0, 0, 0, 0.25);
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -13,6 +13,11 @@
 .row {
   display: flex;
   flex-direction: row;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
 }
 
 .col-1 {

@@ -15,7 +15,7 @@ function PlayerItem({data}) {
           {data.name}
           </h3>
         </div>
-        <div className='col-3' />
+        <div className='col-5' />
         <div className='col-2 playerColumn'>
           <h3>
           {data.teams.join(', ')}
@@ -24,11 +24,6 @@ function PlayerItem({data}) {
         <div className='col-2 playerColumn'>
           <h3>
           {data.start_season}-{data.end_season}
-          </h3>
-        </div>
-        <div className='col-2 playerColumn'>
-          <h3>
-          {data.status}
           </h3>
         </div>
       </Link>

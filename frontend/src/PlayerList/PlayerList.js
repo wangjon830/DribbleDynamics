@@ -42,7 +42,7 @@ function PlayerList() {
     return (
     <div className="App-page container">
         <div className='row'>
-            <div className='searchBar'>
+            <div id="searchBar" className='searchBar'>
                 <form onSubmit={handleSearch}>
                     <input id="searchName" name="searchName" type="text" placeholder='Search..' />
                     <button type="submit"><i className="fa fa-search"></i></button>
@@ -56,32 +56,31 @@ function PlayerList() {
                 </form>
             </div>
         </div>
-        <div className='row'>
-            <div className='col-12 listHeader'>
-                <div className='row'>
-                    <div className='col-1 playerHeadshot' />
-                    <div className='col-2 playerName'>
-                        <h3>&nbsp;&nbsp;Name</h3>
+        <div>
+            <div className='row'>
+                <div id="playerList" className='col-12 listHeader'>
+                    <div className='row'>
+                        <div className='col-1 playerHeadshot' />
+                        <div className='col-2 playerName'>
+                            <h3>&nbsp;&nbsp;Name</h3>
+                        </div>
+                        <div className='col-5' />
+                        <div className='col-2 playerColumn'>
+                            <h3>Teams</h3>
+                        </div>
+                        <div className='col-2 playerColumn'>
+                            <h3>Seasons</h3>
+                        </div>
                     </div>
-                    <div className='col-3' />
-                    <div className='col-2 playerColumn'>
-                        <h3>Teams</h3>
-                    </div>
-                    <div className='col-2 playerColumn'>
-                        <h3>Seasons</h3>
-                    </div>
-                    <div className='col-2 playerColumn'>
-                        <h3>Status</h3>
-                    </div>
+                    <hr/>
                 </div>
-                <hr/>
             </div>
-        </div>
-        <div className='row'>
-            <div className='col-12 listContainer'>
-                {mockData && mockData.players.map(item => (
-                    <PlayerItem key={item.id} data={item} />
-                ))}
+            <div className='row'>
+                <div className='col-12 listContainer'>
+                    {mockData && mockData.players.map(item => (
+                        <PlayerItem key={item.id} data={item} />
+                    ))}
+                </div>
             </div>
         </div>
     </div>
