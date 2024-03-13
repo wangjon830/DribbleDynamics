@@ -174,9 +174,13 @@ function PlayerPBP({data}) {
               
               setSelectedTime([Math.floor(text1), Math.floor(text2)]);
 
-              labelL.attr('x', s[0] - 40)
+              labelL
+                .attr('x', s[0] - 45)
+                .attr('y', height/2 + 5)
                 .text(formatTime(text1))
-              labelR.attr('x', s[1])
+              labelR
+                .attr('x', s[1] + 10)
+                .attr('y', height/2 + 5)
                 .text(formatTime(text2))
 
               svg.node().value = s.map(function(d) {var temp = x.invert(d); return +temp.toFixed(2)});
