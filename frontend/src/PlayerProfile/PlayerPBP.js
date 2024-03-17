@@ -113,7 +113,8 @@ function PlayerPBP({data}) {
     // Create Slider
     useEffect(() => {
       if (gameInfo && currentGameInfo && sliderContainer.current) {
-        const svg = d3.select(sliderContainer.current);
+        const svg = d3.select(sliderContainer.current)
+          .style('overflow', 'visible');
 
         // Clear SVG to prevent duplication
         svg.selectAll("*").remove();
@@ -267,7 +268,8 @@ function PlayerPBP({data}) {
     useEffect(() => {
       const imageUrl = `${process.env.PUBLIC_URL}/Images/court.png`;
       if (gameInfo && heatmapContainer.current) {
-        const svg = d3.select(heatmapContainer.current);
+        const svg = d3.select(heatmapContainer.current)
+          .style('overflow', 'visible');
 
         // Clear SVG to prevent duplication
         svg.selectAll("*").remove();
@@ -317,7 +319,7 @@ function PlayerPBP({data}) {
             .attr("cx", d => x(d.x))
             .attr("cy", d => y(d.y))
             .attr("r", 8)
-            .attr("fill", d=> d.miss ? d.type === "3" ? 'orange' : 'red' : d.type === "3" ? 'cyan' : 'lime')
+            .attr("fill", d=> d.miss ? d.type === 3 ? 'orange' : 'red' : d.type === 3 ? 'cyan' : 'lime')
             .on("mouseover", function(event, d) {
               d3.select(this).attr("r", 15);
               setHoveredShot(d);
@@ -343,7 +345,7 @@ function PlayerPBP({data}) {
             callback={handleJoyrideCallback}
             styles={{
               options: {
-                zIndex: 10000, // Make sure Joyride renders above your content
+                zIndex: 10000,
               },
             }}
           />

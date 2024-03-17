@@ -106,24 +106,25 @@
 
 .graphSelectorMain .active{
     font-weight: 600;
-    background-color: rgba(0,0,0,0.01);
+    background-color: var(--button-color-active);;
 }
 
 .graphSelectorMain .inactive{
     font-weight: 400;
-    background-color: white;
+    background-color: var(--button-color);
 }
 
 
 .graphSelectorMain button:hover{
-    background-color: rgba(0,0,0,0.05);
+    background-color: var(--button-color-active);
 }
 
 .playerGraphContainer {
     height: 85vh;
     width: 100vw;
     margin: 10px 5vw 10px 5vw;
-    background-color: aliceblue;
+    background-color: var(--graph-background-color);
+    color: var(--graph-text-color);
     position: relative;
 }
 
@@ -179,7 +180,6 @@
 }
 
 .pbpSliderBrush .selection{
-    fill: grey;
     fill-opacity: 0.5;
 }
 
@@ -398,7 +398,7 @@
 }
 
 .joyrideIcon:hover {
-    color: rgb(0, 0, 0, 0.5);
+    opacity: 0.75;
 }
 
 #progressionJoyride {
@@ -432,4 +432,22 @@
 
 .pcaYaxis .domain {
     stroke: none;
+}
+
+.loadings-label {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.similarLegendItem {
+    padding: 5px 0px 5px 0px;
+}
+.similarLegendName {
+    width: auto;
+}
+
+.similarLegendColor {
+    margin: 0px;
+    width: 25px;
+    height: 25px;
 }

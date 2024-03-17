@@ -115,7 +115,8 @@ function PlayerProgression({data}) {
     // Draw Line plot
     useEffect(() => {
       if (careerAverages && selectedStats && lineContainer.current) {
-        const svg = d3.select(lineContainer.current);
+        const svg = d3.select(lineContainer.current)
+          .style('overflow', 'visible');
 
         // Clear SVG and legend to prevent duplication
         svg.selectAll("*").remove();
@@ -328,7 +329,8 @@ function PlayerProgression({data}) {
         var season0 = brushRange[0] + 1;
         var season1 = brushRange[1];
 
-        const svg = d3.select(histogramContainer.current);
+        const svg = d3.select(histogramContainer.current)
+          .style('overflow', 'visible');
 
         // Clear SVG and legend to prevent duplication
         svg.selectAll("*").remove();
@@ -518,7 +520,7 @@ function PlayerProgression({data}) {
             callback={handleJoyrideCallback}
             styles={{
               options: {
-                zIndex: 10000, // Make sure Joyride renders above your content
+                zIndex: 10000,
               },
             }}
           />

@@ -1,0 +1,10 @@
+{
+    "success":true,
+    "payload": {
+        "id":"t1",
+        "name":"Los Angeles Lakers",
+        "championships":17,
+        "conference_titles":19,
+        "division_titles":34
+    }
+}

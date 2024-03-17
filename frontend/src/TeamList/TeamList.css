@@ -48,7 +48,7 @@
     padding: 10px 20px 10px 20px;
 }
 
-.playerItemContainer {
+.teamItemContainer {
     border: 1px solid var(--text-color);
     margin: 5px 0px 5px 0px;
     padding: 10px;
@@ -56,11 +56,11 @@
     color: var(--text-color);
 }
 
-.playerItemContainer:hover {
+.teamItemContainer:hover {
     background-color: var(--hover-transform);
 }
 
-.playerHeadshotContainer {
+.teamHeadshotContainer {
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -70,7 +70,7 @@
     width: 70px;
 }
 
-.playerHeadshotContainer img {
+.teamHeadshotContainer img {
     height: auto;
     width: auto;
     min-width: 100%;
@@ -78,7 +78,7 @@
     object-fit: cover;
 }
 
-.playerName {
+.teamName {
     float:left;
     text-align: left;
     font-size: 20px;
@@ -87,7 +87,7 @@
     align-items: center;
 }
 
-.playerColumn {
+.teamColumn {
     text-align: center;
     display: flex;
     justify-content: center;

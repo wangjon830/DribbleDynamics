@@ -5,6 +5,9 @@ import Home from './Home/Home';
 import PlayerList from './PlayerList/PlayerList';
 import TeamList from './TeamList/TeamList';
 import PlayerProfile from './PlayerProfile/PlayerProfile';
+import TeamProfile from './TeamProfile/TeamProfile';
+import PlayerPortal from './PlayerPortal/PlayerPortal';
+import TeamPortal from './TeamPortal/TeamPortal';
 
 function App() {
   return (
@@ -14,7 +17,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/playerList" element={<PlayerList />} />
           <Route path="/teamList" element={<TeamList />} />
+          <Route path="/playerPortal" element={<PlayerPortal />} />
+          <Route path="/teamPortal" element={<TeamPortal />} />
           <Route path="/playerProfile/:playerId" element={<PlayerProfile />} />
+          <Route path="/teamProfile/:teamId" element={<TeamProfile />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,12 +1,21 @@
 import { Link, useLocation } from 'react-router-dom';
 import '../shared/App.css'
 import '../shared/Navbar.css'; 
+import 'react-toggle/style.css';
 import React, { useEffect, useState } from 'react';
+import Toggle from "react-toggle";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import { faBookOpen, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 function Navbar() {
+    // Manage theme
+    const [isDark, setIsDark] = useState(false);
+
+    useEffect(() => {
+        document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    }, [isDark]);
+
     // Manage Location
     const location = useLocation();
     const [pageType, setPageType] = useState("home");
@@ -27,6 +36,16 @@ function Navbar() {
     const [isInfoVisible, setIsInfoVisible] = useState(false);
     const toggleInfoOff = () => setIsInfoVisible(false);
     const toggleInfoOn = () => setIsInfoVisible(true);
+
+    // Manage player dropdown visibility
+    const [isPlayerVisible, setIsPlayerVisible] = useState(false);
+    const togglePlayerOff = () => setIsPlayerVisible(false);
+    const togglePlayerOn = () => setIsPlayerVisible(true);
+
+    // Manage player dropdown visibility
+    const [isTeamVisible, setIsTeamVisible] = useState(false);
+    const toggleTeamOff = () => setIsTeamVisible(false);
+    const toggleTeamOn = () => setIsTeamVisible(true);
 
     function PlayerProfileInfo() {
         return (
@@ -63,21 +82,49 @@ function Navbar() {
         <div id="navbar" className='container sticky'>
             <div className="nav-main row">
                 <div className='col-4' />
-                <Link id='navPlayers' className='col-1 nav-link' to="/playerList">
+                <div id='nav-player' className='col-1 nav-link' onMouseEnter={togglePlayerOn} onMouseLeave={togglePlayerOff} >
                     <div className='nav-text nav-sub-text'>
                         <p>Players</p>
                     </div>
-                </Link>
-                <Link id='navHome' className='col-2 nav-link' to="/">
+                    {isPlayerVisible && 
+                        <div className="player-menu">
+                            <Link id='navPlayerList' to="/playerList">
+                                <div id="player-link-1" className='menu-link'>
+                                    <p>Player Profiles</p>
+                                </div>
+                            </Link>
+                            <Link id='navPlayerPortal' to="/playerPortal">
+                                <div id="player-link-2" className='menu-link'>
+                                    <p>Player Portal</p>
+                                </div>
+                            </Link>
+                        </div>
+                    }
+                </div>
+                <Link id='nav-home' className='col-2 nav-link' to="/">
                     <div className='nav-text nav-main-text'>
                         <p>Dribble <br /> Dynamics</p>
                     </div>
                 </Link>
-                <Link id='navTeams' className='col-1 nav-link' to="/teamList">
+                <div id='nav-team' className='col-1 nav-link' onMouseEnter={toggleTeamOn} onMouseLeave={toggleTeamOff} >
                     <div className='nav-text nav-sub-text'>
                         <p>Teams</p>
                     </div>
-                </Link>
+                    {isTeamVisible && 
+                        <div className="player-menu">
+                            <Link id='navTeanList' to="/teamList">
+                                <div id="team-link-1" className='menu-link'>
+                                    <p>Team Profiles</p>
+                                </div>
+                            </Link>
+                            <Link id='navTeamPortal' to="/teamPortal">
+                                <div id="team-link-2" className='menu-link'>
+                                    <p>Team Portal</p>
+                                </div>
+                            </Link>
+                        </div>
+                    }
+                </div>
                 <div className='col-2' />
                 {pageType === 'playerProfile' ? 
                     PlayerProfileInfo()
@@ -85,7 +132,21 @@ function Navbar() {
                 (
                     <div className='col-1'/>
                 )}
-                <div className='col-1' />
+                <div className='col-1 nav-mode'>
+                    <div className='row nav-text nav-mode-text'>
+                        <FontAwesomeIcon icon={faSun} />
+                        &nbsp;
+                        <Toggle
+                            className='darkToggle'
+                            checked={isDark}
+                            onChange={({ target }) => setIsDark(target.checked)}
+                            icons={{ checked: "", unchecked: "" }}
+                            aria-label="Dark mode toggle"
+                        />
+                        &nbsp;
+                        <FontAwesomeIcon icon={faMoon} />
+                    </div>
+                </div>
             </div>
         </div>
     );

@@ -1,0 +1,31 @@
+{
+    "success": true,
+    "payload": {
+        "loadings": {
+            "apg":[1, 0]
+        },
+        "scatter": {
+            "num_points": 3,
+            "points": [
+                {
+                    "id": "p1",
+                    "name":"Lebron James",
+                    "x":7.4,
+                    "y": 1
+                },
+                {
+                    "id": "p2",
+                    "name":"Michael Jordan",
+                    "x":5.3,
+                    "y": 1
+                },
+                {
+                    "id": "p3",
+                    "name":"Nikola Jokic",
+                    "x":6.9,
+                    "y": 1
+                }
+            ]
+        }
+    }
+}

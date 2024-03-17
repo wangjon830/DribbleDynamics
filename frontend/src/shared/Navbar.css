@@ -1,7 +1,7 @@
 .sticky {
     position: sticky;
     top: 0px;
-    background-color: white;
+    background-color: var(--navbar-background-color);
     z-index: 1000;
 }
 
@@ -17,14 +17,19 @@
 }
 
 .nav-link:hover {
-    background-color: rgba(0,0,0, 0.05);
+    background-color: var(--hover-transform);
     font-weight: bolder;
 }
 
+.nav-mode {
+    position: relative;
+    text-decoration: none;
+    height: 100%;
+}
+
 .nav-text {
-    text-align: left;
     position: absolute;
-    color:#000;
+    color:var(--text-color);
     text-align: center;
 }
 
@@ -44,6 +49,13 @@
     bottom: -12.5px;
 }
 
+.nav-mode-text {
+    font-size: 25px;
+    left: calc(50%);
+    transform: translateX(-50%);
+    bottom: 5px;
+}
+
 .nav-icon {
     font-size: 25px;
     left: calc(50%);
@@ -54,15 +66,16 @@
 .info-menu {
     width: 200%;
     height: auto;
-    background-color: rgb(240, 240, 240);
-    border-color: black;
+    background-color: var(--navbar-background-color);
+    border-color: var(--text-color);
+    color: var(--text-color);
     border-width: 1px;
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid;
     position: absolute;
     top: 100%;
-    left:-50%;
+    left:calc(-50% - 10px);
     padding: 10px;
 }
 
@@ -77,4 +90,63 @@
     font-size: 15px;
     font-weight: 400;
     margin: 5px;
+}
+
+.nav-text {
+    font-size: 20px;
+    font-weight: 800;
+    position: absolute;
+    color:var(--text-color);
+    text-align: center;
+}
+
+.player-menu {
+    width: 150%;
+    height: 70px;
+    background-color: var(--navbar-background-color);
+    border-color: var(--text-color);
+    color: var(--text-color);
+    border-width: 1px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    position: absolute;
+    top: 100%;
+    left:-25%;
+}
+
+.menu-link {
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 600;
+    height: 35px;
+    color:var(--text-color);
+    text-decoration: none;
+    text-align: center;
+}
+
+.menu-link:hover {
+    background-color: var(--hover-transform);
+}
+
+#player-link-1 {
+    top: 0;
+}
+
+#player-link-2 {
+    top: 35px;
+}
+
+#team-link-1 {
+    top: 0;
+}
+
+#team-link-2 {
+    top: 35px;
 }

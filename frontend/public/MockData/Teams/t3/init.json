@@ -1,0 +1,10 @@
+{
+    "success":true,
+    "payload": {
+        "id":"t3",
+        "name":"Denver Nuggets",
+        "championships":1,
+        "conference_titles":1,
+        "division_titles":12
+    }
+}

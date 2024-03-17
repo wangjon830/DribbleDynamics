@@ -1,5 +1,35 @@
+/* light theme colors */
+:root {
+  --navbar-background-color: #EAEAEA;
+  --graph-background-color: #f0f8ff;
+  --graph-text-color: #000000;
+  --main-background-color: #f3f6ff;
+  --list-background-color: #d5dae7;
+  --text-color: #000000;
+  --hover-transform: rgba(0,0,0,0.05);
+  --button-color: #ffffff;
+  --button-color-active: #c0c0c0;
+}
+
+/* dark theme colors */
+[data-theme="dark"] {
+  --navbar-background-color: #222222;
+  --graph-background-color: #f0f8ff;
+  --graph-text-color: #000000;
+  --main-background-color: #474747;
+  --list-background-color: #292929;
+  --text-color: #ffffff;
+  --hover-transform: rgba(255, 255, 255, 0.25);
+  --button-color: #ffffff;
+  --button-color-active: #c0c0c0;
+}
+
+body {
+  background-color: var(--main-background-color);
+  color: var(--text-color);
+}
+
 .App-page {
-  background-color: rgba(0, 0, 0, 0.25);
   min-height: 100vh;
   display: flex;
   flex-direction: column;

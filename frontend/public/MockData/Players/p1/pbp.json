@@ -1,35 +1,1511 @@
 {
-    "success":true,
+    "success": true,
     "payload": {
         "gameList": [
-            {"name": "BKN @ LAL 2/15", "id": 1},
-            {"name":"CLE @ LAL 3/15", "id": 2}
+            {
+                "name": "LAL vs GSW on Oct 18, 2022",
+                "id": 0
+            },
+            {
+                "name": "LAL vs MIN on Oct 28, 2022",
+                "id": 1
+            },
+            {
+                "name": "LAL vs SAS on Nov 25, 2022",
+                "id": 2
+            },
+            {
+                "name": "LAL vs WAS on Dec 4, 2022",
+                "id": 3
+            },
+            {
+                "name": "LAL vs UTA on Apr 4, 2023",
+                "id": 4
+            }
         ],
         "gameInfo": {
+            "0": {
+                "shots": [
+                    {
+                        "x": 116,
+                        "y": -48,
+                        "time": 154,
+                        "miss": false,
+                        "score": [
+                            2,
+                            2
+                        ],
+                        "distance": 26,
+                        "type": 3
+                    },
+                    {
+                        "x": 256,
+                        "y": 20,
+                        "time": 202,
+                        "miss": false,
+                        "score": [
+                            4,
+                            5
+                        ],
+                        "distance": 16,
+                        "type": 2
+                    },
+                    {
+                        "x": 358,
+                        "y": -88,
+                        "time": 230,
+                        "miss": false,
+                        "score": [
+                            4,
+                            7
+                        ],
+                        "distance": 11,
+                        "type": 2
+                    },
+                    {
+                        "x": 466,
+                        "y": -34,
+                        "time": 396,
+                        "miss": true,
+                        "score": [
+                            12,
+                            19
+                        ],
+                        "distance": 3,
+                        "type": 2
+                    },
+                    {
+                        "x": 469,
+                        "y": 281,
+                        "time": 658,
+                        "miss": false,
+                        "score": [
+                            22,
+                            23
+                        ],
+                        "distance": 23,
+                        "type": 3
+                    },
+                    {
+                        "x": 473,
+                        "y": -4,
+                        "time": 750,
+                        "miss": true,
+                        "score": [
+                            24,
+                            25
+                        ],
+                        "distance": 1,
+                        "type": 2
+                    },
+                    {
+                        "x": 232,
+                        "y": -233,
+                        "time": 810,
+                        "miss": false,
+                        "score": [
+                            24,
+                            27
+                        ],
+                        "distance": 26,
+                        "type": 3
+                    },
+                    {
+                        "x": 488,
+                        "y": -22,
+                        "time": 835,
+                        "miss": true,
+                        "score": [
+                            26,
+                            27
+                        ],
+                        "distance": 2,
+                        "type": 2
+                    },
+                    {
+                        "x": 216,
+                        "y": -217,
+                        "time": 870,
+                        "miss": false,
+                        "score": [
+                            26,
+                            29
+                        ],
+                        "distance": 26,
+                        "type": 3
+                    },
+                    {
+                        "x": 170,
+                        "y": -160,
+                        "time": 905,
+                        "miss": false,
+                        "score": [
+                            26,
+                            32
+                        ],
+                        "distance": 25,
+                        "type": 3
+                    },
+                    {
+                        "x": 475,
+                        "y": -22,
+                        "time": 1014,
+                        "miss": false,
+                        "score": [
+                            31,
+                            39
+                        ],
+                        "distance": 2,
+                        "type": 2
+                    },
+                    {
+                        "x": 473,
+                        "y": 8,
+                        "time": 1207,
+                        "miss": true,
+                        "score": [
+                            39,
+                            49
+                        ],
+                        "distance": 1,
+                        "type": 2
+                    },
+                    {
+                        "x": 416,
+                        "y": -8,
+                        "time": 1286,
+                        "miss": false,
+                        "score": [
+                            39,
+                            51
+                        ],
+                        "distance": 5,
+                        "type": 2
+                    },
+                    {
+                        "x": 486,
+                        "y": 8,
+                        "time": 1332,
+                        "miss": true,
+                        "score": [
+                            44,
+                            53
+                        ],
+                        "distance": 1,
+                        "type": 2
+                    },
+                    {
+                        "x": 488,
+                        "y": -3,
+                        "time": 1382,
+                        "miss": false,
+                        "score": [
+                            46,
+                            55
+                        ],
+                        "distance": 0,
+                        "type": 2
+                    },
+                    {
+                        "x": -232,
+                        "y": -212,
+                        "time": 1511,
+                        "miss": true,
+                        "score": [
+                            58,
+                            63
+                        ],
+                        "distance": 25,
+                        "type": 3
+                    },
+                    {
+                        "x": -230,
+                        "y": 142,
+                        "time": 1620,
+                        "miss": false,
+                        "score": [
+                            60,
+                            70
+                        ],
+                        "distance": 21,
+                        "type": 2
+                    },
+                    {
+                        "x": -476,
+                        "y": -3,
+                        "time": 1636,
+                        "miss": true,
+                        "score": [
+                            62,
+                            70
+                        ],
+                        "distance": 1,
+                        "type": 2
+                    },
+                    {
+                        "x": -479,
+                        "y": -9,
+                        "time": 2089,
+                        "miss": true,
+                        "score": [
+                            68,
+                            91
+                        ],
+                        "distance": 1,
+                        "type": 2
+                    },
+                    {
+                        "x": -132,
+                        "y": -67,
+                        "time": 2154,
+                        "miss": true,
+                        "score": [
+                            71,
+                            91
+                        ],
+                        "distance": 25,
+                        "type": 3
+                    },
+                    {
+                        "x": -202,
+                        "y": 191,
+                        "time": 2176,
+                        "miss": false,
+                        "score": [
+                            71,
+                            91
+                        ],
+                        "distance": 25,
+                        "type": 3
+                    },
+                    {
+                        "x": -473,
+                        "y": -1,
+                        "time": 2253,
+                        "miss": true,
+                        "score": [
+                            75,
+                            93
+                        ],
+                        "distance": 1,
+                        "type": 2
+                    },
+                    {
+                        "x": -145,
+                        "y": -111,
+                        "time": 2291,
+                        "miss": false,
+                        "score": [
+                            75,
+                            93
+                        ],
+                        "distance": 25,
+                        "type": 3
+                    },
+                    {
+                        "x": -488,
+                        "y": -3,
+                        "time": 2336,
+                        "miss": true,
+                        "score": [
+                            77,
+                            93
+                        ],
+                        "distance": 0,
+                        "type": 2
+                    },
+                    {
+                        "x": -463,
+                        "y": 288,
+                        "time": 2654,
+                        "miss": true,
+                        "score": [
+                            96,
+                            109
+                        ],
+                        "distance": 24,
+                        "type": 3
+                    }
+                ],
+                "finalScore": [109, 123],
+                "overtimes": 0,
+                "teams": [
+                    "LAL",
+                    "GSW"
+                ],
+                "date": "Oct 18, 2022"
+            },
             "1": {
                 "shots": [
-                    {"x":-396, "y": -280, "time":"30", "miss":false, "score":[2,0], "distance": 20, "type":"3"},
-                    {"x":-396, "y": -280, "time":"2000", "miss":false, "score":[4,0], "distance": 22, "type":"3"},
-                    {"x":-396, "y": 280, "time":"750", "miss":false, "score":[6,0], "distance": 23, "type":"3"},
-                    {"x":396, "y": 280, "time":"1470", "miss":true, "score":[6,0], "distance": 25, "type":"3"},
-                    {"x":396, "y": -280, "time":"2190", "miss":false, "score":[8,0], "distance": 21, "type":"3"}
+                    {
+                        "x": 207,
+                        "y": -202,
+                        "time": 38,
+                        "miss": true,
+                        "score": [
+                            3,
+                            2
+                        ],
+                        "distance": 25,
+                        "type": 3
+                    },
+                    {
+                        "x": 116,
+                        "y": 6,
+                        "time": 123,
+                        "miss": false,
+                        "score": [
+                            7,
+                            7
+                        ],
+                        "distance": 26,
+                        "type": 3
+                    },
+                    {
+                        "x": 306,
+                        "y": 25,
+                        "time": 184,
+                        "miss": false,
+                        "score": [
+                            7,
+                            9
+                        ],
+                        "distance": 13,
+                        "type": 2
+                    },
+                    {
+                        "x": 468,
+                        "y": 8,
+                        "time": 341,
+                        "miss": false,
+                        "score": [
+                            10,
+                            19
+                        ],
+                        "distance": 2,
+                        "type": 2
+                    },
+                    {
+                        "x": 444,
+                        "y": 46,
+                        "time": 427,
+                        "miss": false,
+                        "score": [
+                            12,
+                            21
+                        ],
+                        "distance": 5,
+                        "type": 2
+                    },
+                    {
+                        "x": 488,
+                        "y": -3,
+                        "time": 483,
+                        "miss": true,
+                        "score": [
+                            16,
+                            21
+                        ],
+                        "distance": 0,
+                        "type": 2
+                    },
+                    {
+                        "x": 488,
+                        "y": -3,
+                        "time": 915,
+                        "miss": true,
+                        "score": [
+                            31,
+                            35
+                        ],
+                        "distance": 0,
+                        "type": 2
+                    },
+                    {
+                        "x": 481,
+                        "y": -8,
+                        "time": 1029,
+                        "miss": true,
+                        "score": [
+                            34,
+                            39
+                        ],
+                        "distance": 1,
+                        "type": 2
+                    },
+                    {
+                        "x": 429,
+                        "y": 17,
+                        "time": 1098,
+                        "miss": false,
+                        "score": [
+                            37,
+                            42
+                        ],
+                        "distance": 4,
+                        "type": 2
+                    },
+                    {
+                        "x": 446,
+                        "y": 10,
+                        "time": 1325,
+                        "miss": false,
+                        "score": [
+                            45,
+                            49
+                        ],
+                        "distance": 3,
+                        "type": 2
+                    },
+                    {
+                        "x": 476,
+                        "y": -1,
+                        "time": 1405,
+                        "miss": true,
+                        "score": [
+                            50,
+                            52
+                        ],
+                        "distance": 1,
+                        "type": 2
+                    },
+                    {
+                        "x": 473,
+                        "y": 1,
+                        "time": 1434,
+                        "miss": true,
+                        "score": [
+                            52,
+                            52
+                        ],
+                        "distance": 1,
+                        "type": 2
+                    },
+                    {
+                        "x": -475,
+                        "y": -285,
+                        "time": 1516,
+                        "miss": false,
+                        "score": [
+                            52,
+                            54
+                        ],
+                        "distance": 23,
+                        "type": 3
+                    },
+                    {
+                        "x": -484,
+                        "y": -5,
+                        "time": 1587,
+                        "miss": true,
+                        "score": [
+                            57,
+                            56
+                        ],
+                        "distance": 0,
+                        "type": 2
+                    },
+                    {
+                        "x": -498,
+                        "y": -149,
+                        "time": 1718,
+                        "miss": false,
+                        "score": [
+                            57,
+                            61
+                        ],
+                        "distance": 12,
+                        "type": 2
+                    },
+                    {
+                        "x": -123,
+                        "y": -26,
+                        "time": 1805,
+                        "miss": false,
+                        "score": [
+                            61,
+                            63
+                        ],
+                        "distance": 25,
+                        "type": 3
+                    },
+                    {
+                        "x": -484,
+                        "y": 25,
+                        "time": 1826,
+                        "miss": false,
+                        "score": [
+                            61,
+                            65
+                        ],
+                        "distance": 2,
+                        "type": 2
+                    },
+                    {
+                        "x": -488,
+                        "y": -3,
+                        "time": 1828,
+                        "miss": false,
+                        "score": [
+                            61,
+                            65
+                        ],
+                        "distance": 0,
+                        "type": 2
+                    },
+                    {
+                        "x": -482,
+                        "y": -5,
+                        "time": 2262,
+                        "miss": true,
+                        "score": [
+                            79,
+                            83
+                        ],
+                        "distance": 0,
+                        "type": 2
+                    },
+                    {
+                        "x": -484,
+                        "y": -8,
+                        "time": 2286,
+                        "miss": false,
+                        "score": [
+                            80,
+                            83
+                        ],
+                        "distance": 1,
+                        "type": 2
+                    },
+                    {
+                        "x": -238,
+                        "y": -227,
+                        "time": 2295,
+                        "miss": false,
+                        "score": [
+                            80,
+                            83
+                        ],
+                        "distance": 25,
+                        "type": 3
+                    },
+                    {
+                        "x": -110,
+                        "y": -173,
+                        "time": 2342,
+                        "miss": false,
+                        "score": [
+                            80,
+                            86
+                        ],
+                        "distance": 30,
+                        "type": 3
+                    },
+                    {
+                        "x": -379,
+                        "y": 88,
+                        "time": 2396,
+                        "miss": true,
+                        "score": [
+                            82,
+                            88
+                        ],
+                        "distance": 11,
+                        "type": 2
+                    },
+                    {
+                        "x": -475,
+                        "y": 9,
+                        "time": 2451,
+                        "miss": true,
+                        "score": [
+                            84,
+                            90
+                        ],
+                        "distance": 1,
+                        "type": 2
+                    }
                 ],
-                "finalScore": [10, 0],
-                "overtimes":1,
-                "teams": ["LAL", "BKN"],
-                "date": "2/15"
+                "finalScore": [102, 111],
+                "overtimes": 0,
+                "teams": [
+                    "LAL",
+                    "MIN"
+                ],
+                "date": "Oct 28, 2022"
             },
             "2": {
                 "shots": [
-                    {"x":-284, "y": 0, "time":"30", "miss":false, "score":[2,0], "distance": 20, "type":"2"},
-                    {"x":-450, "y": 0, "time":"750", "miss":false, "score":[4,0], "distance": 20, "type":"2"},
-                    {"x":284, "y": 0, "time":"1470", "miss":true, "score":[4,0], "distance": 20, "type":"2"},
-                    {"x":450, "y": 0, "time":"2190", "miss":false, "score":[6,0], "distance": 20, "type":"2"}
+                    {
+                        "x": 387,
+                        "y": -173,
+                        "time": 17,
+                        "miss": true,
+                        "score": [
+                            2,
+                            0
+                        ],
+                        "distance": 16,
+                        "type": 2
+                    },
+                    {
+                        "x": 394,
+                        "y": -38,
+                        "time": 78,
+                        "miss": false,
+                        "score": [
+                            5,
+                            2
+                        ],
+                        "distance": 7,
+                        "type": 2
+                    },
+                    {
+                        "x": 119,
+                        "y": 31,
+                        "time": 750,
+                        "miss": false,
+                        "score": [
+                            33,
+                            21
+                        ],
+                        "distance": 26,
+                        "type": 3
+                    },
+                    {
+                        "x": 157,
+                        "y": -152,
+                        "time": 778,
+                        "miss": true,
+                        "score": [
+                            36,
+                            23
+                        ],
+                        "distance": 26,
+                        "type": 3
+                    },
+                    {
+                        "x": 495,
+                        "y": 276,
+                        "time": 813,
+                        "miss": false,
+                        "score": [
+                            36,
+                            26
+                        ],
+                        "distance": 23,
+                        "type": 3
+                    },
+                    {
+                        "x": 256,
+                        "y": 175,
+                        "time": 902,
+                        "miss": false,
+                        "score": [
+                            38,
+                            28
+                        ],
+                        "distance": 22,
+                        "type": 2
+                    },
+                    {
+                        "x": 484,
+                        "y": -24,
+                        "time": 1309,
+                        "miss": true,
+                        "score": [
+                            53,
+                            37
+                        ],
+                        "distance": 2,
+                        "type": 2
+                    },
+                    {
+                        "x": 491,
+                        "y": -25,
+                        "time": 1402,
+                        "miss": true,
+                        "score": [
+                            59,
+                            39
+                        ],
+                        "distance": 2,
+                        "type": 2
+                    },
+                    {
+                        "x": -481,
+                        "y": -12,
+                        "time": 1610,
+                        "miss": false,
+                        "score": [
+                            68,
+                            50
+                        ],
+                        "distance": 1,
+                        "type": 2
+                    },
+                    {
+                        "x": -475,
+                        "y": -1,
+                        "time": 1872,
+                        "miss": true,
+                        "score": [
+                            77,
+                            63
+                        ],
+                        "distance": 1,
+                        "type": 2
+                    },
+                    {
+                        "x": -482,
+                        "y": 0,
+                        "time": 2395,
+                        "miss": true,
+                        "score": [
+                            88,
+                            78
+                        ],
+                        "distance": 0,
+                        "type": 2
+                    },
+                    {
+                        "x": -481,
+                        "y": 6,
+                        "time": 2411,
+                        "miss": true,
+                        "score": [
+                            90,
+                            78
+                        ],
+                        "distance": 1,
+                        "type": 2
+                    },
+                    {
+                        "x": -109,
+                        "y": -94,
+                        "time": 2499,
+                        "miss": false,
+                        "score": [
+                            92,
+                            80
+                        ],
+                        "distance": 27,
+                        "type": 3
+                    },
+                    {
+                        "x": -479,
+                        "y": -19,
+                        "time": 2612,
+                        "miss": false,
+                        "score": [
+                            95,
+                            85
+                        ],
+                        "distance": 1,
+                        "type": 2
+                    },
+                    {
+                        "x": -488,
+                        "y": -12,
+                        "time": 2637,
+                        "miss": true,
+                        "score": [
+                            99,
+                            87
+                        ],
+                        "distance": 1,
+                        "type": 2
+                    },
+                    {
+                        "x": -267,
+                        "y": 156,
+                        "time": 2672,
+                        "miss": false,
+                        "score": [
+                            99,
+                            87
+                        ],
+                        "distance": 20,
+                        "type": 2
+                    },
+                    {
+                        "x": -512,
+                        "y": -230,
+                        "time": 2770,
+                        "miss": false,
+                        "score": [
+                            103,
+                            90
+                        ],
+                        "distance": 18,
+                        "type": 2
+                    }
                 ],
-                "finalScore": [8, 0],
-                "overtimes":2,
-                "teams": ["LAL", "BKN"],
-                "date": "3/15"
+                "finalScore": [105, 94],
+                "overtimes": 0,
+                "teams": [
+                    "LAL",
+                    "SAS"
+                ],
+                "date": "Nov 25, 2022"
+            },
+            "3": {
+                "shots": [
+                    {
+                        "x": 264,
+                        "y": -249,
+                        "time": 102,
+                        "miss": true,
+                        "score": [
+                            10,
+                            4
+                        ],
+                        "distance": 25,
+                        "type": 3
+                    },
+                    {
+                        "x": 118,
+                        "y": 25,
+                        "time": 228,
+                        "miss": false,
+                        "score": [
+                            10,
+                            9
+                        ],
+                        "distance": 26,
+                        "type": 3
+                    },
+                    {
+                        "x": 476,
+                        "y": -25,
+                        "time": 319,
+                        "miss": true,
+                        "score": [
+                            12,
+                            15
+                        ],
+                        "distance": 2,
+                        "type": 2
+                    },
+                    {
+                        "x": 390,
+                        "y": 82,
+                        "time": 348,
+                        "miss": true,
+                        "score": [
+                            14,
+                            15
+                        ],
+                        "distance": 10,
+                        "type": 2
+                    },
+                    {
+                        "x": 468,
+                        "y": -3,
+                        "time": 371,
+                        "miss": true,
+                        "score": [
+                            16,
+                            15
+                        ],
+                        "distance": 1,
+                        "type": 2
+                    },
+                    {
+                        "x": 475,
+                        "y": -19,
+                        "time": 413,
+                        "miss": false,
+                        "score": [
+                            18,
+                            15
+                        ],
+                        "distance": 2,
+                        "type": 2
+                    },
+                    {
+                        "x": 187,
+                        "y": -229,
+                        "time": 427,
+                        "miss": false,
+                        "score": [
+                            18,
+                            15
+                        ],
+                        "distance": 28,
+                        "type": 3
+                    },
+                    {
+                        "x": 149,
+                        "y": -235,
+                        "time": 790,
+                        "miss": true,
+                        "score": [
+                            39,
+                            29
+                        ],
+                        "distance": 30,
+                        "type": 3
+                    },
+                    {
+                        "x": 206,
+                        "y": -235,
+                        "time": 910,
+                        "miss": false,
+                        "score": [
+                            44,
+                            33
+                        ],
+                        "distance": 27,
+                        "type": 3
+                    },
+                    {
+                        "x": 450,
+                        "y": -8,
+                        "time": 1336,
+                        "miss": true,
+                        "score": [
+                            65,
+                            45
+                        ],
+                        "distance": 3,
+                        "type": 2
+                    },
+                    {
+                        "x": 444,
+                        "y": 102,
+                        "time": 1387,
+                        "miss": false,
+                        "score": [
+                            68,
+                            47
+                        ],
+                        "distance": 9,
+                        "type": 2
+                    },
+                    {
+                        "x": -489,
+                        "y": 24,
+                        "time": 1486,
+                        "miss": false,
+                        "score": [
+                            68,
+                            52
+                        ],
+                        "distance": 2,
+                        "type": 2
+                    },
+                    {
+                        "x": -457,
+                        "y": -93,
+                        "time": 1537,
+                        "miss": true,
+                        "score": [
+                            73,
+                            52
+                        ],
+                        "distance": 8,
+                        "type": 2
+                    },
+                    {
+                        "x": -468,
+                        "y": 30,
+                        "time": 1576,
+                        "miss": false,
+                        "score": [
+                            73,
+                            52
+                        ],
+                        "distance": 3,
+                        "type": 2
+                    },
+                    {
+                        "x": -466,
+                        "y": 11,
+                        "time": 1679,
+                        "miss": true,
+                        "score": [
+                            81,
+                            54
+                        ],
+                        "distance": 2,
+                        "type": 2
+                    },
+                    {
+                        "x": -466,
+                        "y": -201,
+                        "time": 2198,
+                        "miss": false,
+                        "score": [
+                            105,
+                            81
+                        ],
+                        "distance": 16,
+                        "type": 2
+                    },
+                    {
+                        "x": -475,
+                        "y": -20,
+                        "time": 2232,
+                        "miss": true,
+                        "score": [
+                            107,
+                            83
+                        ],
+                        "distance": 2,
+                        "type": 2
+                    },
+                    {
+                        "x": -157,
+                        "y": 181,
+                        "time": 2239,
+                        "miss": false,
+                        "score": [
+                            107,
+                            83
+                        ],
+                        "distance": 27,
+                        "type": 3
+                    },
+                    {
+                        "x": -466,
+                        "y": -43,
+                        "time": 2333,
+                        "miss": true,
+                        "score": [
+                            109,
+                            92
+                        ],
+                        "distance": 4,
+                        "type": 2
+                    },
+                    {
+                        "x": -469,
+                        "y": -69,
+                        "time": 2361,
+                        "miss": false,
+                        "score": [
+                            109,
+                            92
+                        ],
+                        "distance": 6,
+                        "type": 2
+                    },
+                    {
+                        "x": -460,
+                        "y": 1,
+                        "time": 2668,
+                        "miss": true,
+                        "score": [
+                            125,
+                            107
+                        ],
+                        "distance": 2,
+                        "type": 2
+                    },
+                    {
+                        "x": -379,
+                        "y": 0,
+                        "time": 2700,
+                        "miss": false,
+                        "score": [
+                            125,
+                            107
+                        ],
+                        "distance": 8,
+                        "type": 2
+                    },
+                    {
+                        "x": -397,
+                        "y": 0,
+                        "time": 2703,
+                        "miss": false,
+                        "score": [
+                            125,
+                            107
+                        ],
+                        "distance": 6,
+                        "type": 2
+                    },
+                    {
+                        "x": -465,
+                        "y": -34,
+                        "time": 2712,
+                        "miss": true,
+                        "score": [
+                            127,
+                            109
+                        ],
+                        "distance": 3,
+                        "type": 2
+                    },
+                    {
+                        "x": -446,
+                        "y": -34,
+                        "time": 2787,
+                        "miss": false,
+                        "score": [
+                            127,
+                            115
+                        ],
+                        "distance": 4,
+                        "type": 2
+                    },
+                    {
+                        "x": -116,
+                        "y": -109,
+                        "time": 2819,
+                        "miss": false,
+                        "score": [
+                            129,
+                            115
+                        ],
+                        "distance": 27,
+                        "type": 3
+                    }
+                ],
+                "finalScore": [130, 119],
+                "overtimes": 0,
+                "teams": [
+                    "LAL",
+                    "WAS"
+                ],
+                "date": "Dec 4, 2022"
+            },
+            "4": {
+                "shots": [
+                    {
+                        "x": 343,
+                        "y": -210,
+                        "time": 38,
+                        "miss": false,
+                        "score": [
+                            0,
+                            2
+                        ],
+                        "distance": 20,
+                        "type": 2
+                    },
+                    {
+                        "x": 404,
+                        "y": 203,
+                        "time": 198,
+                        "miss": true,
+                        "score": [
+                            8,
+                            7
+                        ],
+                        "distance": 18,
+                        "type": 2
+                    },
+                    {
+                        "x": 423,
+                        "y": -41,
+                        "time": 555,
+                        "miss": true,
+                        "score": [
+                            26,
+                            19
+                        ],
+                        "distance": 6,
+                        "type": 2
+                    },
+                    {
+                        "x": 488,
+                        "y": -56,
+                        "time": 740,
+                        "miss": true,
+                        "score": [
+                            36,
+                            33
+                        ],
+                        "distance": 4,
+                        "type": 2
+                    },
+                    {
+                        "x": 125,
+                        "y": 31,
+                        "time": 759,
+                        "miss": false,
+                        "score": [
+                            36,
+                            33
+                        ],
+                        "distance": 26,
+                        "type": 3
+                    },
+                    {
+                        "x": 431,
+                        "y": 40,
+                        "time": 798,
+                        "miss": false,
+                        "score": [
+                            36,
+                            35
+                        ],
+                        "distance": 5,
+                        "type": 2
+                    },
+                    {
+                        "x": 495,
+                        "y": 26,
+                        "time": 813,
+                        "miss": true,
+                        "score": [
+                            38,
+                            35
+                        ],
+                        "distance": 2,
+                        "type": 2
+                    },
+                    {
+                        "x": 202,
+                        "y": -189,
+                        "time": 884,
+                        "miss": true,
+                        "score": [
+                            41,
+                            39
+                        ],
+                        "distance": 25,
+                        "type": 3
+                    },
+                    {
+                        "x": 495,
+                        "y": -55,
+                        "time": 936,
+                        "miss": true,
+                        "score": [
+                            45,
+                            39
+                        ],
+                        "distance": 4,
+                        "type": 2
+                    },
+                    {
+                        "x": 131,
+                        "y": 27,
+                        "time": 963,
+                        "miss": false,
+                        "score": [
+                            46,
+                            42
+                        ],
+                        "distance": 25,
+                        "type": 3
+                    },
+                    {
+                        "x": -213,
+                        "y": 14,
+                        "time": 1579,
+                        "miss": false,
+                        "score": [
+                            71,
+                            62
+                        ],
+                        "distance": 19,
+                        "type": 2
+                    },
+                    {
+                        "x": -194,
+                        "y": -209,
+                        "time": 1641,
+                        "miss": false,
+                        "score": [
+                            71,
+                            65
+                        ],
+                        "distance": 26,
+                        "type": 3
+                    },
+                    {
+                        "x": -408,
+                        "y": -291,
+                        "time": 1704,
+                        "miss": true,
+                        "score": [
+                            77,
+                            70
+                        ],
+                        "distance": 24,
+                        "type": 3
+                    },
+                    {
+                        "x": -112,
+                        "y": 25,
+                        "time": 2011,
+                        "miss": false,
+                        "score": [
+                            89,
+                            87
+                        ],
+                        "distance": 26,
+                        "type": 3
+                    },
+                    {
+                        "x": -444,
+                        "y": -68,
+                        "time": 2136,
+                        "miss": true,
+                        "score": [
+                            97,
+                            91
+                        ],
+                        "distance": 6,
+                        "type": 2
+                    },
+                    {
+                        "x": -54,
+                        "y": -40,
+                        "time": 2278,
+                        "miss": false,
+                        "score": [
+                            97,
+                            97
+                        ],
+                        "distance": 30,
+                        "type": 3
+                    },
+                    {
+                        "x": -449,
+                        "y": -31,
+                        "time": 2330,
+                        "miss": true,
+                        "score": [
+                            102,
+                            99
+                        ],
+                        "distance": 4,
+                        "type": 2
+                    },
+                    {
+                        "x": -248,
+                        "y": -181,
+                        "time": 2365,
+                        "miss": false,
+                        "score": [
+                            102,
+                            101
+                        ],
+                        "distance": 22,
+                        "type": 2
+                    },
+                    {
+                        "x": -379,
+                        "y": -42,
+                        "time": 2637,
+                        "miss": true,
+                        "score": [
+                            114,
+                            106
+                        ],
+                        "distance": 8,
+                        "type": 2
+                    },
+                    {
+                        "x": -481,
+                        "y": 21,
+                        "time": 2674,
+                        "miss": true,
+                        "score": [
+                            116,
+                            109
+                        ],
+                        "distance": 2,
+                        "type": 2
+                    },
+                    {
+                        "x": -449,
+                        "y": -37,
+                        "time": 2707,
+                        "miss": false,
+                        "score": [
+                            117,
+                            111
+                        ],
+                        "distance": 4,
+                        "type": 2
+                    },
+                    {
+                        "x": -452,
+                        "y": -43,
+                        "time": 2880,
+                        "miss": false,
+                        "score": [
+                            124,
+                            124
+                        ],
+                        "distance": 4,
+                        "type": 2
+                    },
+                    {
+                        "x": -206,
+                        "y": 223,
+                        "time": 2904,
+                        "miss": true,
+                        "score": [
+                            127,
+                            127
+                        ],
+                        "distance": 27,
+                        "type": 3
+                    },
+                    {
+                        "x": -216,
+                        "y": 231,
+                        "time": 2997,
+                        "miss": false,
+                        "score": [
+                            127,
+                            127
+                        ],
+                        "distance": 27,
+                        "type": 3
+                    },
+                    {
+                        "x": -476,
+                        "y": 25,
+                        "time": 3024,
+                        "miss": true,
+                        "score": [
+                            129,
+                            127
+                        ],
+                        "distance": 3,
+                        "type": 2
+                    },
+                    {
+                        "x": -160,
+                        "y": -161,
+                        "time": 3122,
+                        "miss": false,
+                        "score": [
+                            131,
+                            132
+                        ],
+                        "distance": 26,
+                        "type": 3
+                    },
+                    {
+                        "x": -481,
+                        "y": 25,
+                        "time": 3153,
+                        "miss": true,
+                        "score": [
+                            135,
+                            133
+                        ],
+                        "distance": 2,
+                        "type": 2
+                    }
+                ],
+                "finalScore": [135, 133],
+                "overtimes": 1,
+                "teams": [
+                    "LAL",
+                    "UTA"
+                ],
+                "date": "Apr 4, 2023"
             }
         }
     }

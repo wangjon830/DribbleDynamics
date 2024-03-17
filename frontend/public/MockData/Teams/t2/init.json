@@ -1,0 +1,10 @@
+{
+    "success":true,
+    "payload": {
+        "id":"t2",
+        "name":"Chicago Bulls",
+        "championships":6,
+        "conference_titles":6,
+        "division_titles":9
+    }
+}
