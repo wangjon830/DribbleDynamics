@@ -22,6 +22,8 @@
 /frontend/yarn-debug.log*
 /frontend/yarn-error.log*
 
+/backend/db_login.json
+
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
 amplify/.config/local-*

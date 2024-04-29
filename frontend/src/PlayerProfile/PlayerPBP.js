@@ -55,6 +55,24 @@ function PlayerPBP({data}) {
       }
     };
 
+    const [serverUrl, setServerUrl] = useState(null)
+
+    useEffect(() => {
+      setLoading(true);
+      const serverDataUrl = `${process.env.PUBLIC_URL}/server.json`;
+      fetch(serverDataUrl)
+          .then((response) => response.json())
+          .then((data) => {
+              setServerUrl(data.address);
+              setLoading(false);
+          })
+          .catch((error) => {
+              console.error("Error fetching data: ", error);
+              setError(error);
+              setLoading(false);
+          });
+    }, [])
+
     const heatmapContainer = useRef(null);
     const sliderContainer = useRef(null);
 
@@ -87,23 +105,33 @@ function PlayerPBP({data}) {
 
     // Load data
     useEffect(() => {
-      setLoading(true);
-      const dataUrl = `${process.env.PUBLIC_URL}/MockData/Players/${data.id}/pbp.json`;
-    
-      // Fetch the JSON file
-      fetch(dataUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          setGameList(data.payload.gameList);
-          setGameInfo(data.payload.gameInfo);
-          setLoading(false);
+      if(data && data.id && serverUrl){
+        setLoading(true);
+        var dataUrl = `${serverUrl}/get_player_pbp?id=${data.id}`;
+        if(String(data.id).startsWith('p')){ // Mock Data case
+          dataUrl = `${process.env.PUBLIC_URL}/MockData/Players/${data.id}/pbp.json`;
+        }
+      
+        // Fetch the JSON file
+        fetch(dataUrl, {
+            method: 'GET',
+            headers: {
+                "ngrok-skip-browser-warning":"69420",
+            }
         })
-        .catch((error) => {
-          console.error("Error fetching data: ", error);
-          setError(error);
-          setLoading(false);
-        });
-    }, [data]);
+          .then((response) => response.json())
+          .then((data) => {
+            setGameList(data.payload.gameList);
+            setGameInfo(data.payload.gameInfo);
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.error("Error fetching data: ", error);
+            setError(error);
+            setLoading(false);
+          });
+      }
+    }, [data, serverUrl]);
 
     // Handle selection change
     const handleGameSelection = (event) => {

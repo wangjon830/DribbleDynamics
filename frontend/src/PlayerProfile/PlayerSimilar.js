@@ -47,11 +47,30 @@ function PlayerSimilar({data}) {
       }
     };
 
+    const [serverUrl, setServerUrl] = useState(null)
+
+    useEffect(() => {
+      setLoading(true);
+      const serverDataUrl = `${process.env.PUBLIC_URL}/server.json`;
+      fetch(serverDataUrl)
+          .then((response) => response.json())
+          .then((data) => {
+              setServerUrl(data.address);
+              setLoading(false);
+          })
+          .catch((error) => {
+              console.error("Error fetching data: ", error);
+              setError(error);
+              setLoading(false);
+          });
+    }, [])
+
     const scatterContainer = useRef(null);
     const pcaContainer = useRef(null);
 
     const [scatterData, setScatterData] = useState(null)
     const [pcaData, setPcaData] = useState(null)
+    const [radar, setRadar] = useState({})
 
     const [possibleStats, setPossibleStats] = useState([]);
     const [selectedStats, setSelectedStats] = useState([]);
@@ -88,57 +107,182 @@ function PlayerSimilar({data}) {
 
     // Load init data
     useEffect(() => {
-      setLoading(true);
-      const dataUrl = `${process.env.PUBLIC_URL}/MockData/Players/${data.id}/similar.json`;
-    
-      // Fetch the JSON file
-      fetch(dataUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          setPossibleStats(data.payload.stats.sort())
-          setSelectedStats([])
-          setLoading(false);
+      if(data && data.id && serverUrl){
+        setLoading(true);
+        var dataUrl = `${serverUrl}/get_player_similar_setup?id=${data.id}`;
+        if(String(data.id).startsWith('p')){ // Mock Data case
+          dataUrl = `${process.env.PUBLIC_URL}/MockData/Players/${data.id}/similar.json`;
+        }
+      
+        // Fetch the JSON file
+        fetch(dataUrl, {
+            method: 'GET',
+            headers: {
+                "ngrok-skip-browser-warning":"69420",
+            }
         })
-        .catch((error) => {
-          console.error("Error fetching data: ", error);
-          setError(error);
-          setLoading(false);
-        });
-    }, [data]);
+          .then((response) => response.json())
+          .then((data) => {
+            setRadar(data.payload.radar_chart)
+            setPossibleStats(data.payload.stats.sort())
+            setSelectedStats([])
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.error("Error fetching data: ", error);
+            setError(error);
+            setLoading(false);
+          });
+      }
+    }, [data, serverUrl]);
 
     // Load graph data
     useEffect(() => {
-      setLoading(true);
-      var dataUrl = null;
-      if(selectedStats.length === 1) {
-        dataUrl = `${process.env.PUBLIC_URL}/MockData/Players/${data.id}/similar_1D.json`;
-      } else if(selectedStats.length === 2) {
-        dataUrl = `${process.env.PUBLIC_URL}/MockData/Players/${data.id}/similar_2D.json`;
-      } else if(selectedStats.length === 3) {
-        dataUrl = `${process.env.PUBLIC_URL}/MockData/Players/${data.id}/similar_3D.json`;
+      if(data && data.id && selectedStats && selectedStats.length > 0 && serverUrl){
+        setLoading(true);
+        console.log(selectedStats)
+        var dataUrl = `${serverUrl}/get_player_similar?id=${data.id}&stats=${selectedStats}`;
+        //var dataUrl = null
+        if(String(data.id).startsWith('p')){ // Mock Data case
+          dataUrl = null
+          if(selectedStats.length === 1) {
+            dataUrl = `${process.env.PUBLIC_URL}/MockData/Players/${data.id}/similar_1D.json`;
+          } else if(selectedStats.length === 2) {
+            dataUrl = `${process.env.PUBLIC_URL}/MockData/Players/${data.id}/similar_2D.json`;
+          } else if(selectedStats.length === 3) {
+            dataUrl = `${process.env.PUBLIC_URL}/MockData/Players/${data.id}/similar_3D.json`;
+          }
+        }
+    
+        // Fetch the JSON file
+        if(dataUrl){
+          fetch(dataUrl, {
+              method: 'GET',
+              headers: {
+                  "ngrok-skip-browser-warning":"69420",
+              }
+          })
+          .then((response) => response.json())
+          .then((data) => {
+            setScatterData(data.payload.scatter);
+            setPcaData(data.payload.loadings);
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.error("Error fetching data: ", error);
+            setError(error);
+            setLoading(false);
+          });
+        } else {
+          setScatterData(null);
+          setPcaData(null);
+          setLoading(false);
+        }
       }
-  
-      // Fetch the JSON file
-      if(dataUrl){
-        fetch(dataUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          setScatterData(data.payload.scatter);
-          setPcaData(data.payload.loadings);
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error("Error fetching data: ", error);
-          setError(error);
-          setLoading(false);
-        });
-      } else {
-        setScatterData(null);
-        setPcaData(null);
-        setLoading(false);
+    }, [selectedStats, data, serverUrl]);
+
+    function drawRadarChart(container, input_radar) {
+      console.log(input_radar)
+      console.log(radar)
+
+      const cfg = {
+        w: 200, // Width of the circle
+        h: 200, // Height of the circle
+        margin: { top: 25, right: 25, bottom: 25, left: 25 },
+        levels: 5, // How many levels or inner circles
+        maxValue:  100, // Maximum value of the chart
+        labelFactor: 1.1, // Positioning of labels
+        opacityArea: 0.15, // Opacity of areas
+        dotRadius: 4, // Size of the dot
+        opacityCircles: 0.1, // Opacity of circles
+        strokeWidth: 2, // Width of stroke
+        roundStrokes: false,
+        color: ['gold', 'steelblue'] // Color scale
+      };
+
+      const totalWidth = cfg.w + cfg.margin.left + cfg.margin.right;
+      const totalHeight = cfg.h + cfg.margin.top + cfg.margin.bottom;
+
+      container.select('*').remove();
+
+      let svg = container.append("svg")
+        .attr("width", totalWidth)
+        .attr("height", totalHeight)
+        .append("g")
+        .attr("transform", `translate(${cfg.w / 2 + cfg.margin.left}, ${cfg.h / 2 + cfg.margin.top})`);
+
+      // Create a radial scale for the radius of the radar chart
+      const radius = Math.min(cfg.w / 2, cfg.h / 2);
+      const rScale = d3.scaleLinear()
+        .range([0, radius])
+        .domain([0, cfg.maxValue]);
+
+      const axes = Object.keys(input_radar)
+      const angleSlice = Math.PI * 2 / axes.length;
+
+      // Draw the circles
+      for(let i = 0; i <= cfg.levels; ++i) {
+        const r = radius * (i / cfg.levels);
+        svg.append("circle")
+          .attr("cx", 0)
+          .attr("cy", 0)
+          .attr("r", r)
+          .style("fill", "none")
+          .style("stroke", "grey")
+          .style("opacity", cfg.opacityCircles);
       }
 
-    }, [selectedStats, data]);
+      // Draw the axes
+      const axis = svg.selectAll(".axis")
+        .data(axes)
+        .enter().append("g")
+        .attr("class", "axis");
+
+      axis.append("line")
+        .attr("x1", 0)
+        .attr("y1", 0)
+        .attr("x2", (d, i) => rScale(cfg.maxValue) * Math.cos(angleSlice * i - Math.PI / 2))
+        .attr("y2", (d, i) => rScale(cfg.maxValue) * Math.sin(angleSlice * i - Math.PI / 2))
+        .attr("class", "line")
+        .style("stroke", "grey")
+        .style("stroke-width", "1px");
+
+      // Draw the labels
+      axis.append("text")
+        .attr("class", "legend")
+        .style("font-size", "12px")
+        .attr("text-anchor", "middle")
+        .attr("dy", "0.35em")
+        .attr("x", (d, i) => (rScale(cfg.maxValue * cfg.labelFactor) * Math.cos(angleSlice * i - Math.PI / 2)))
+        .attr("y", (d, i) => (rScale(cfg.maxValue * cfg.labelFactor) * Math.sin(angleSlice * i - Math.PI / 2)))
+        .text(d => d);
+
+      // Draw the radar area
+      const radarLine = d3.lineRadial()
+        .curve(cfg.roundStrokes ? d3.curveCardinalClosed : d3.curveLinearClosed)
+        .radius(d => rScale(d))
+        .angle((d, i) => i * angleSlice);
+
+      svg.selectAll(".area")
+        .data([Object.values(radar)])
+        .enter().append("path")
+        .attr("class", "radarArea")
+        .attr("d", radarLine)
+        .style("fill", cfg.color[0])
+        .style("fill-opacity", cfg.opacityArea)
+        .style("stroke", cfg.color[0])
+        .style("stroke-width", cfg.strokeWidth + "px");
+
+      svg.selectAll(".area")
+        .data([Object.values(input_radar)])
+        .enter().append("path")
+        .attr("class", "radarArea")
+        .attr("d", radarLine)
+        .style("fill", cfg.color[1])
+        .style("fill-opacity", cfg.opacityArea)
+        .style("stroke", cfg.color[1])
+        .style("stroke-width", cfg.strokeWidth + "px");
+    }
 
     // Draw scatter plot
     useEffect(() => {
@@ -247,13 +391,25 @@ function PlayerSimilar({data}) {
             .attr('fill', d => d.id === data.id ? 'gold' : 'steelblue')
             .attr("clip-path", "url(#plotClip)")
             .on("mouseover", function(event, d) {
+              const radarContainer = d3.select('#radarChartContainer');
+              radarContainer.style('display', 'block'); 
+              drawRadarChart(radarContainer, d.radar_chart);
+
               g.append("text")
                 .attr("x", x(d.x))
                 .attr("y", y(d.y) - 10)
                 .attr("class", "tooltip")
                 .text(`Name: ${d.name}`);
             })
+            .on("mousemove", function(event) {
+              // Update the position of the tooltip based on the mouse position
+              d3.select('#radarChartContainer')
+                  .style('left', (event.pageX - 0.04*windowWidth) + 'px') // Offset by 15px to avoid cursor overlap
+                  .style('top', (event.pageY - 0.85*windowHeight - 350) + 'px');
+            })
             .on("mouseout", function() {
+              d3.select('#radarChartContainer').style('display', 'none');
+
               g.selectAll(".tooltip").remove(); // Remove tooltip
             });
 
@@ -272,6 +428,10 @@ function PlayerSimilar({data}) {
                   g.selectAll('circle')  // For example, if you have circles in your plot
                       .attr('cx', d => new_xScale(d.x))
                       .on("mouseover", function(event, d) {
+                        const radarContainer = d3.select('#radarChartContainer');
+                        radarContainer.style('display', 'block'); 
+                        drawRadarChart(radarContainer, d.radar_chart);
+
                         g.append("text")
                           .attr("x", new_xScale(d.x))
                           .attr("y", y(d.y) - 10)
@@ -362,13 +522,25 @@ function PlayerSimilar({data}) {
             .attr('r', 15)
             .attr('fill', d => d.id === data.id ? 'gold' : 'steelblue')
             .on("mouseover", function(event, d) {
+              const radarContainer = d3.select('#radarChartContainer');
+              radarContainer.style('display', 'block'); 
+              drawRadarChart(radarContainer, d.radar_chart);
+
               g.append("text")
                 .attr("x", x(d.x))
                 .attr("y", y(d.y) - 10)
                 .attr("class", "tooltip")
                 .text(`Name: ${d.name}`);
             })
+            .on("mousemove", function(event) {
+              // Update the position of the tooltip based on the mouse position
+              d3.select('#radarChartContainer')
+                  .style('left', (event.pageX - 0.04*windowWidth) + 'px') // Offset by 15px to avoid cursor overlap
+                  .style('top', (event.pageY - 0.85*windowHeight - 350) + 'px');
+            })
             .on("mouseout", function() {
+              d3.select('#radarChartContainer').style('display', 'none');
+
               g.selectAll(".tooltip").remove(); // Remove tooltip
             });
           // Define the zoom behavior
@@ -390,6 +562,9 @@ function PlayerSimilar({data}) {
                       .attr('cx', d => new_xScale(d.x))
                       .attr('cy', d => new_yScale(d.y))
                       .on("mouseover", function(event, d) {
+                        const radarContainer = d3.select('#radarChartContainer');
+                        radarContainer.style('display', 'block');
+                        drawRadarChart(radarContainer, d.radar_chart);
                         g.append("text")
                           .attr("x", new_xScale(d.x))
                           .attr("y", new_yScale(d.y) - 10)
@@ -438,13 +613,25 @@ function PlayerSimilar({data}) {
                       .attr('cx', d => new_xScale(d.x))
                       .attr('cy', d => new_yScale(d.y))
                       .on("mouseover", function(event, d) {
+                        const radarContainer = d3.select('#radarChartContainer');
+                        radarContainer.style('display', 'block');
+                        drawRadarChart(radarContainer, d.radar_chart);
+
                         g.append("text")
                           .attr("x", new_xScale(d.x))
                           .attr("y", new_yScale(d.y) - 10)
                           .attr("class", "tooltip")
                           .text(`Name: ${d.name}`);
                       })
+                      .on("mousemove", function(event) {
+                        // Update the position of the tooltip based on the mouse position
+                        d3.select('#radarChartContainer')
+                            .style('left', (event.pageX - 0.04*windowWidth) + 'px') // Offset by 15px to avoid cursor overlap
+                            .style('top', (event.pageY - 0.85*windowHeight - 350) + 'px');
+                      })
                       .on("mouseout", function() {
+                        d3.select('#radarChartContainer').style('display', 'none');
+
                         g.selectAll(".tooltip").remove(); // Remove tooltip
                       });
               });
@@ -633,17 +820,25 @@ function PlayerSimilar({data}) {
               ref={scatterContainer}
             />
           </div>
+          <div id="radarChartContainer" style={{ position: 'absolute', display: 'none' }}></div>
           <div className='col-4'>
             <div className='row playerSimilarLegendContainer'>
               <div id="statLegend" className='col-1 playerSimilarLegendBox'>
                 <h3>Legend:</h3>
                   <div key={data.id} className='row similarLegendItem'>
-                  <div className='similarLegendName'>
-                    {data.name}: 
+                    <div className='similarLegendName'>
+                      {data.name}: 
+                    </div>
+                    <div className='similarLegendColor' style={{backgroundColor: "gold"}} />
+                    <br/>
                   </div>
-                  <div className='similarLegendColor' style={{backgroundColor: "gold"}} />
-                  <br/>
-                </div>
+                  <div key='other' className='row similarLegendItem'>
+                    <div className='similarLegendName'>
+                      Other: 
+                    </div>
+                    <div className='similarLegendColor' style={{backgroundColor: "steelblue"}} />
+                    <br/>
+                  </div>
               </div>
               <div id="statSelect" className='col-1 playerSimilarLegendBox'>
                 <div id='pbpJoyride' className='joyrideIcon' onClick={startTour}>

@@ -15,11 +15,7 @@ function Home() {
             Dribble <br /> Dynamics
           </p>
           <p className='header-main-subtext'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut laoreet sapien diam, in semper turpis fermentum at. 
-            Ut pretium diam nec metus imperdiet, luctus iaculis mauris ullamcorper. Aenean feugiat sapien a ex ornare, 
-            eu pretium felis molestie. Pellentesque ligula leo, luctus a nulla in, sollicitudin venenatis arcu. Vestibulum 
-            a ornare felis, at euismod lorem. Sed semper vel massa non facilisis. Aenean eu cursus tortor, volutpat dignissim 
-            odio. Nulla id sagittis enim. Aenean varius at nibh dapibus facilisis. Donec condimentum elit ante, id consectetur erat iaculis pretium. Fusce quis interdum nunc.
+            Our data is sourced from the NBA API. As a result, historical stats are only available from present day to around 1983.
           </p>
         </div>
         <div className='col-2'/>

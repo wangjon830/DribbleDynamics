@@ -1,13 +1,26 @@
 import '../shared/App.css';
 import './TeamProfile.css';
+import React, { useState, useEffect } from 'react';
 
 function TeamBanner({data}) {
+    const [imageSrc, setImgSrc] = useState('')
+
+    const handleError = () => {
+      setImgSrc("https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png")
+    }
+
+    useEffect(() => {
+      if(data) {
+        setImgSrc(`https://cdn.nba.com/logos/nba/${data.id}/primary/L/logo.svg`)
+      }
+    }, [data])
+
     if(data) {
       return (
         <div className='row banner'>
           <div className='col-3 bannerProfile'>
             <div className='circleImgContainer teamImg'>
-              <img src={`${process.env.PUBLIC_URL}/MockData/Teams/${data.id}/logo.svg`} alt="Team Logo"/>
+              <img src={imageSrc} onError={handleError} alt="Team Logo"/>
             </div>
             <div className='teamBannerName'>
               <h1>{data.name}</h1>

@@ -10,7 +10,7 @@ import { faBookOpen, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 function Navbar() {
     // Manage theme
-    const [isDark, setIsDark] = useState(false);
+    const [isDark, setIsDark] = useState(true);
 
     useEffect(() => {
         document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
@@ -65,13 +65,13 @@ function Navbar() {
                         <p className='term'> <strong>FPG:</strong> Fouls&nbsp;Per&nbsp;Game</p>
                         <p className='term'> <strong>FGA:</strong> Field&nbsp;Goal&nbsp;Attempts</p>
                         <p className='term'> <strong>FGM:</strong> Field&nbsp;Goals&nbsp;Made</p>
-                        <p className='term'> <strong>FG%:</strong> Field&nbsp;Goal&nbsp;Percentage</p>
-                        <p className='term'> <strong>3PA:</strong> Three&nbsp;Pointer&nbsp;Attempts</p>
-                        <p className='term'> <strong>3PM:</strong> Three&nbsp;Pointers&nbsp;Made</p>
-                        <p className='term'> <strong>3P%:</strong> Three&nbsp;Pointer&nbsp;Percentage</p>
+                        <p className='term'> <strong>FGP:</strong> Field&nbsp;Goal&nbsp;Percentage</p>
+                        <p className='term'> <strong>TPA:</strong> Three&nbsp;Pointer&nbsp;Attempts</p>
+                        <p className='term'> <strong>TPM:</strong> Three&nbsp;Pointers&nbsp;Made</p>
+                        <p className='term'> <strong>TPP:</strong> Three&nbsp;Pointer&nbsp;Percentage</p>
                         <p className='term'> <strong>FTA:</strong> Free&nbsp;Throw&nbsp;Attempts</p>
                         <p className='term'> <strong>FTM:</strong> Free&nbsp;Throws&nbsp;Made</p>
-                        <p className='term'> <strong>FT%:</strong> Free&nbsp;Throw&nbsp;Percentage</p>
+                        <p className='term'> <strong>FTP:</strong> Free&nbsp;Throw&nbsp;Percentage</p>
                     </div>
                 }
             </div>

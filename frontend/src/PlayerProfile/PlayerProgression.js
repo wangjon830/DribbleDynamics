@@ -51,6 +51,24 @@ function PlayerProgression({data}) {
       }
     };
 
+    const [serverUrl, setServerUrl] = useState(null)
+
+    useEffect(() => {
+      setLoading(true);
+      const serverDataUrl = `${process.env.PUBLIC_URL}/server.json`;
+      fetch(serverDataUrl)
+          .then((response) => response.json())
+          .then((data) => {
+              setServerUrl(data.address);
+              setLoading(false);
+          })
+          .catch((error) => {
+              console.error("Error fetching data: ", error);
+              setError(error);
+              setLoading(false);
+          });
+    }, [])
+
     const lineContainer = useRef(null);
     const histogramContainer = useRef(null);
     const [careerAverages, setPoints] = useState(null);
@@ -92,25 +110,35 @@ function PlayerProgression({data}) {
 
     // Load data
     useEffect(() => {
-      setLoading(true);
-      const dataUrl = `${process.env.PUBLIC_URL}/MockData/Players/${data.id}/career.json`;
-    
-      // Fetch the JSON file
-      fetch(dataUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          setPoints(data.payload.career_stats.seasonAverages);
-          setGamesPer(data.payload.career_stats.gamesPer);
-          setPossibleStats(data.payload.career_stats.stats.sort())
-          setSelectedStats(data.payload.career_stats.stats.sort())
-          setLoading(false);
+      if(data && data.id && serverUrl){
+        setLoading(true);
+        var dataUrl = `${serverUrl}/get_player_career?id=${data.id}`;
+        if(String(data.id).startsWith('p')){ // Mock Data case
+          dataUrl = `${process.env.PUBLIC_URL}/MockData/Players/${data.id}/career.json`;
+        }
+        // Fetch the JSON file
+        fetch(dataUrl, {
+            method: 'GET',
+            headers: {
+                "ngrok-skip-browser-warning":"69420",
+            }
         })
-        .catch((error) => {
-          console.error("Error fetching data: ", error);
-          setError(error);
-          setLoading(false);
-        });
-    }, [data]);
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data)
+            setPoints(data.payload.career_stats.seasonAverages);
+            setGamesPer(data.payload.career_stats.gamesPer);
+            setPossibleStats(data.payload.career_stats.stats.sort())
+            setSelectedStats(data.payload.career_stats.stats.sort())
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.error("Error fetching data: ", error);
+            setError(error);
+            setLoading(false);
+          });
+      }
+    }, [data, serverUrl]);
 
     // Draw Line plot
     useEffect(() => {
@@ -507,6 +535,46 @@ function PlayerProgression({data}) {
       }
     }, [gamesPer, brushRange, careerAverages, selectedStats, windowWidth, windowHeight]);
 
+    function LegendComponent({ legend }) {
+      const elements = []; // Initialize an empty array
+
+      // Iterate through the legend array using a for loop
+      for (let i = 0; i < legend.length; i+=3) {
+        if(i === legend.length - 1){
+          const option = legend[i];
+          elements.push(
+            <div key={option.stat} className='row careerLegendItem'>
+              <div className='careerLegendName'>
+                {option.stat}:
+              </div>
+              <div className='careerLegendColor' style={{backgroundColor: option.color}} />
+            </div>
+          );
+        } else {
+          const option1 = legend[i];
+          const option2 = legend[i+1];
+          elements.push(
+            <div key={option1.stat + ' ' + option2.stat} className='row careerLegendItem'>
+              <div className='careerLegendName'>
+                {option1.stat}:
+              </div>
+              <div className='careerLegendColor' style={{backgroundColor: option1.color, marginRight: '30px'}} />
+              <div className='careerLegendName'>
+                {option2.stat}:
+              </div>
+              <div className='careerLegendColor' style={{backgroundColor: option2.color}} />
+            </div>
+          );
+        }
+      }
+      return (
+        <div id="statLegend" className='col-1 playerProgressionLegendBox'>
+          <h3>Legend:</h3>
+          {elements}
+        </div>
+      );
+    }
+
     if (loading) return <div className='row playerGraphContainer'><LoadingPage /></div>;
     if (error) return <div className='row playerGraphContainer'><ErrorPage /></div>;
     return (
@@ -535,18 +603,7 @@ function PlayerProgression({data}) {
           </div>
           <div className='col-4'>
             <div className='row playerProgressionLegendContainer'>
-              <div id="statLegend" className='col-1 playerProgressionLegendBox'>
-                <h3>Legend:</h3>
-                {legend.map(option => (
-                  <div key={option.stat} className='row careerLegendItem'>
-                    <div className='careerLegendName'>
-                      {option.stat}: 
-                    </div>
-                    <div className='careerLegendColor' style={{backgroundColor: option.color}} />
-                    <br/>
-                  </div>
-                ))}
-              </div>
+              {LegendComponent({legend})}
               <div id='statSelect' className='col-1 playerProgressionLegendBox'>
                 <div id='progressionJoyride' className='joyrideIcon' onClick={startTour}>
                   <FontAwesomeIcon className='joyrideIcon' icon={faCircleQuestion} />

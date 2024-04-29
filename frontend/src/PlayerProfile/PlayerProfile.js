@@ -10,27 +10,59 @@ import ErrorPage from '../shared/ErrorPage';
 function PlayerProfile() {
     let { playerId } = useParams()
 
-    const [playerData, setData] = useState(null);
+    const [serverUrl, setServerUrl] = useState(null)
+    const [playerData, setData] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
   
     useEffect(() => {
       setLoading(true);
-      const dataUrl = `${process.env.PUBLIC_URL}/MockData/Players/${playerId}/init.json`;
-    
-      // Fetch the JSON file
-      fetch(dataUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          setData(data.payload);
-          setLoading(false);
+      const serverDataUrl = `${process.env.PUBLIC_URL}/server.json`;
+      fetch(serverDataUrl)
+          .then((response) => response.json())
+          .then((data) => {
+              setServerUrl(data.address);
+              setLoading(false);
+          })
+          .catch((error) => {
+              console.error("Error fetching data: ", error);
+              setError(error);
+              setLoading(false);
+          });
+    }, [])
+
+    useEffect(() => {
+      if(playerId && serverUrl){
+        console.log(playerId)
+        setLoading(true);
+        var dataUrl = `${serverUrl}/get_player_init?id=${playerId}`;
+        if(playerId.startsWith('p')){ // Mock Data case
+          dataUrl = `${process.env.PUBLIC_URL}/MockData/Players/${playerId}/init.json`;
+        } 
+        console.log(dataUrl)
+        // Fetch the JSON file
+        fetch(dataUrl, {
+            method: 'GET',
+            headers: {
+                "ngrok-skip-browser-warning":"69420",
+            }
         })
-        .catch((error) => {
-          console.error("Error fetching data: ", error);
-          setError(error);
-          setLoading(false);
-        });
-    }, [playerId]);
+          .then((response) => {
+            console.log(response)
+            return response.json()
+          })
+          .then((data) => {
+            setData(data.payload);
+            console.log(data.payload)
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.error("Error fetching data: ", error);
+            setError(error);
+            setLoading(false);
+          });
+      }
+    }, [playerId, serverUrl]);
   
     if (loading) return <LoadingPage />;
     if (error) return <ErrorPage />;

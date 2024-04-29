@@ -11,30 +11,6 @@
         "career_tpg": 2.9,
         "career_fgper": 55.6,
         "career_fg3per": 34.8,
-        "career_ftper": 82.8,
-        "stat_prog":[
-            "Points"
-        ],
-        "games_per":[
-            "Points"
-        ],
-        "game_pbp":[
-            "CHI @ BKN 3/4"
-        ],
-        "radar_chart":{
-            "pts": 90,
-            "reb": 80,
-            "stl": 60,
-            "blk": 60,
-            "3p": 80,
-            "fg%": 75,
-            "ast": 90
-        },
-        "similar_players_stat1":[
-            "Points"
-        ],
-        "similar_players_stat2":[
-            "Rebounds"
-        ]
+        "career_ftper": 82.8
     }
 }

@@ -7,55 +7,80 @@ import LoadingPage from '../shared/LoadingPage';
 import ErrorPage from '../shared/ErrorPage';
 
 function TeamList() {
-    const handleSearch = (event) => {
-        event.preventDefault();
-        const formData = new FormData(event.target);
-        const data = Object.fromEntries(formData.entries());
-        console.log(data);
-    };
+    const [serverUrl, setServerUrl] = useState(null)
     
-    const [mockData, setData] = useState(null);
+    const [teamData, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         setLoading(true);
-        const dataUrl = `${process.env.PUBLIC_URL}/MockData/teams/teamList.json`;
+        const serverDataUrl = `${process.env.PUBLIC_URL}/server.json`;
+        fetch(serverDataUrl)
+            .then((response) => response.json())
+            .then((data) => {
+                setServerUrl(data.address);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error("Error fetching data: ", error);
+                setError(error);
+                setLoading(false);
+            });
+    }, [])
     
-        // Fetch the JSON file
-        fetch(dataUrl)
-          .then((response) => response.json())
-          .then((data) => {
-            setData(data.payload);
-            setLoading(false);
-          })
-          .catch((error) => {
-            console.error("Error fetching data: ", error);
-            setError(error);
-            setLoading(false);
-          });
-      }, []);
+
+    useEffect(() => {
+        if(serverUrl){
+            setLoading(true);
+            const dataUrl = `${serverUrl}/get_teams`;
+            const mockDataUrl = `${process.env.PUBLIC_URL}/MockData/Teams/TeamList.json`;
+        
+            // Fetch the JSON file
+            // Fetch the JSON file
+            fetch(dataUrl, {
+                method: 'GET',
+                headers: {
+                    "ngrok-skip-browser-warning":"69420",
+                }
+            })
+                .then((response) => {
+                    if(!response.ok) {
+                        throw new Error('Network response not ok')
+                    }
+                    console.log(response)
+                    return response.json()
+                })
+                .then((data) => {
+                    if(!data.success){
+                        throw new Error('Query failed')
+                    }
+                    setData(data.payload);
+                    setLoading(false);
+                })
+                .catch((e) => {
+                    console.log(e);
+                    fetch(mockDataUrl)
+                        .then((response) => response.json())
+                        .then((data) => {
+                            setData(data.payload);
+                            setLoading(false);
+                        })
+                        .catch((error) => {
+                            console.error("Error fetching data: ", error);
+                            setError(error);
+                            setLoading(false);
+                        });
+                })
+        }
+      }, [serverUrl]);
 
     if (loading) return <LoadingPage />;
     if (error) return <ErrorPage />;
 
     return (
     <div className="App-page container">
-        <div className='row'>
-            <div id="searchBar" className='searchBar'>
-                <form onSubmit={handleSearch}>
-                    <input id="searchName" name="searchName" type="text" placeholder='Search..' />
-                    <button type="submit"><i className="fa fa-search"></i></button>
-                    <select id="searchSort" name="searchSort" defaultValue="default">
-                        <option value="default" disabled>Sort by</option>
-                        <option value="alphabetical">Alphabetical</option>
-                        <option value="team">Team</option>
-                        <option value="relevance">Relevance</option>
-                        <option value="year">Year</option>
-                    </select>
-                </form>
-            </div>
-        </div>
+        <br/><br/>
         <div>
             <div className='row'>
                 <div id="teamList" className='col-12 listHeader'>
@@ -77,7 +102,7 @@ function TeamList() {
             </div>
             <div className='row'>
                 <div className='col-12 listContainer'>
-                    {mockData && mockData.teams.map(item => (
+                    {teamData && teamData.teams.map(item => (
                         <TeamItem key={item.id} data={item} />
                     ))}
                 </div>

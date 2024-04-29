@@ -9,27 +9,58 @@ import TeamBanner from './TeamBanner';
 function TeamProfile() {
     let { teamId } = useParams()
 
+    const [serverUrl, setServerUrl] = useState(null)
     const [teamData, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
   
     useEffect(() => {
       setLoading(true);
-      const dataUrl = `${process.env.PUBLIC_URL}/MockData/Teams/${teamId}/init.json`;
-    
-      // Fetch the JSON file
-      fetch(dataUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          setData(data.payload);
-          setLoading(false);
+      const serverDataUrl = `${process.env.PUBLIC_URL}/server.json`;
+      fetch(serverDataUrl)
+          .then((response) => response.json())
+          .then((data) => {
+              setServerUrl(data.address);
+              setLoading(false);
+          })
+          .catch((error) => {
+              console.error("Error fetching data: ", error);
+              setError(error);
+              setLoading(false);
+          });
+    }, [])
+
+    useEffect(() => {
+      if(teamId && serverUrl){
+        setLoading(true);
+        var dataUrl = `${serverUrl}/get_team_init?id=${teamId}`;
+        if(teamId.startsWith('t')){ // Mock Data case
+          dataUrl = `${process.env.PUBLIC_URL}/MockData/Players/${teamId}/init.json`;
+        } 
+        console.log(dataUrl)
+      
+        // Fetch the JSON file
+        fetch(dataUrl, {
+            method: 'GET',
+            headers: {
+                "ngrok-skip-browser-warning":"69420",
+            }
         })
-        .catch((error) => {
-          console.error("Error fetching data: ", error);
-          setError(error);
-          setLoading(false);
-        });
-    }, [teamId]);
+          .then((response) => {
+            return response.json()
+          })
+          .then((data) => {
+            console.log(data)
+            setData(data.payload);
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.error("Error fetching data: ", error);
+            setError(error);
+            setLoading(false);
+          });
+      }
+    }, [teamId, serverUrl]);
   
     if (loading) return <LoadingPage />;
     if (error) return <ErrorPage />;

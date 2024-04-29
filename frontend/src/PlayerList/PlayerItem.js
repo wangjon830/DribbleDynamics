@@ -1,13 +1,19 @@
 import '../shared/App.css';
 import './PlayerList.css';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function PlayerItem({data}) {
+  const [imageSrc, setImgSrc] = useState(`https://cdn.nba.com/headshots/nba/latest/1040x760/${data.id}.png`)
+
+  const handleError = () => {
+    setImgSrc("https://cdn.nba.com/headshots/nba/latest/1040x760/fallback.png")
+  }
   return (
       <Link to={`/playerProfile/${data.id}`} className='row playerItemContainer'>
         <div className='col-1 playerHeadshot'>
           <div className='playerHeadshotContainer'>
-            <img src={`${process.env.PUBLIC_URL}/MockData/Players/${data.id}/headshot.avif`} alt="Player Portrait"/>
+            <img src={imageSrc} onError={handleError} alt="Portrait"/>
           </div>
         </div>
         <div className='col-2 playerName'>

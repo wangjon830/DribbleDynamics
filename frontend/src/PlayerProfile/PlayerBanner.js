@@ -1,13 +1,25 @@
 import '../shared/App.css';
 import './PlayerProfile.css';
+import React, { useState, useEffect } from 'react';
 
 function PlayerBanner({data}) {
+    const [imageSrc, setImgSrc] = useState('')
+
+    const handleError = () => {
+      setImgSrc("https://cdn.nba.com/headshots/nba/latest/1040x760/fallback.png")
+    }
+
+    useEffect(() => {
+      if(data) {
+        setImgSrc(`https://cdn.nba.com/headshots/nba/latest/1040x760/${data.id}.png`)
+      }
+    }, [data])
     if(data) {
       return (
         <div className='row banner'>
           <div className='col-3 bannerProfile'>
             <div className='circleImgContainer playerImg'>
-              <img src={`${process.env.PUBLIC_URL}/MockData/Players/${data.id}/headshot.avif`} alt="Player Portrait"/>
+              <img src={imageSrc} onError={handleError} alt="Player Portrait"/>
             </div>
             <div className='playerBannerName'>
               <h1>{data.name}</h1>
@@ -53,7 +65,7 @@ function PlayerBanner({data}) {
                 BPG: {data.career_bpg}, SPG: {data.career_spg}, TPG: {data.career_tpg}
                 </p>
                 <p>
-                FG%: {data.career_fgper}, FG3%: {data.career_fg3per}, FT%: {data.career_ftper}
+                FG%: {data.career_fgper}%, FG3%: {data.career_fg3per}%, FT%: {data.career_ftper}%
                 </p>
               </div>
             </div>
