@@ -539,7 +539,7 @@ function PlayerProgression({data}) {
       const elements = []; // Initialize an empty array
 
       // Iterate through the legend array using a for loop
-      for (let i = 0; i < legend.length; i+=3) {
+      for (let i = 0; i < legend.length; i+=2) {
         if(i === legend.length - 1){
           const option = legend[i];
           elements.push(
