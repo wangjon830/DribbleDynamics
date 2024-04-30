@@ -10,28 +10,15 @@ import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
-database_conn = get_connection('../db_login.json')
-if database_conn:
-    cursor = database_conn.cursor()
-
 app = Flask(__name__)
 CORS(app)
-
-def setup_database_connection():
-    global database_conn, cursor
-    if not database_conn or not database_conn.is_connected():
-        database_conn = get_connection('../db_login.json')
-        if database_conn:
-            cursor = database_conn.cursor()
-            print("Database reconnected")
-        else:
-            print("Failed to reconnect to the database")
 
 @app.route('/get_players', methods=['GET'])
 def get_players():
     try:
-        global database_conn, cursor
-        setup_database_connection()
+        database_conn = get_connection('../db_login.json')
+        if database_conn:
+            cursor = database_conn.cursor()
 
         sortby = request.args.get('sortby', 'name ASC').split()
 
@@ -87,8 +74,9 @@ def get_players():
 @app.route('/get_player_init', methods=['GET'])
 def get_player_init():
     try:
-        global database_conn, cursor
-        setup_database_connection()
+        database_conn = get_connection('../db_login.json')
+        if database_conn:
+            cursor = database_conn.cursor()
 
         id = request.args.get('id', '')
         query = f'''
@@ -141,8 +129,9 @@ def get_player_init():
 @app.route('/get_player_career', methods=['GET'])
 def get_player_career():
     try:
-        global database_conn, cursor
-        setup_database_connection()
+        database_conn = get_connection('../db_login.json')
+        if database_conn:
+            cursor = database_conn.cursor()
 
         id = request.args.get('id', '')
         avgs_query = f'''
@@ -247,8 +236,9 @@ def get_player_career():
 @app.route('/get_player_pbp', methods=['GET'])
 def get_player_pbp():
     try:
-        global database_conn, cursor
-        setup_database_connection()
+        database_conn = get_connection('../db_login.json')
+        if database_conn:
+            cursor = database_conn.cursor()
 
         id = request.args.get('id', '')
         game_query = f'''
@@ -311,8 +301,9 @@ def get_player_pbp():
 @app.route('/get_player_similar_setup', methods=['GET'])
 def get_player_similar_setup():
     try:
-        global database_conn, cursor
-        setup_database_connection()
+        database_conn = get_connection('../db_login.json')
+        if database_conn:
+            cursor = database_conn.cursor()
 
         id = request.args.get('id', '')
         radar_query = f'''
@@ -430,7 +421,6 @@ def getPlayerPoints2D(info, selected_stats):
             points.append(player_point)
     return points, loadings
 
-# TODO
 def getPlayerPointsND(info, selected_stats):
     data = [entry[2:] for entry in info]
     df = pd.DataFrame(data, columns=selected_stats).fillna(0)
@@ -464,8 +454,9 @@ def getDistance(p1, p2):
 @app.route('/get_player_similar', methods=['GET'])
 def get_player_similar(k=200):
     try:
-        global database_conn, cursor
-        setup_database_connection()
+        database_conn = get_connection('../db_login.json')
+        if database_conn:
+            cursor = database_conn.cursor()
 
         id = int(request.args.get('id', ''))
         stats_str = request.args.get('stats', '')
@@ -612,8 +603,9 @@ def get_player_similar(k=200):
 @app.route('/get_teams', methods=['GET'])
 def get_teams():
     try:
-        global database_conn, cursor
-        setup_database_connection()
+        database_conn = get_connection('../db_login.json')
+        if database_conn:
+            cursor = database_conn.cursor()
 
         query = f'''
             SELECT * FROM teams;
@@ -647,9 +639,10 @@ def get_teams():
 @app.route('/get_team_init', methods=['GET'])
 def get_team_init():
     try:
-        global database_conn, cursor
-        setup_database_connection()
-        
+        database_conn = get_connection('../db_login.json')
+        if database_conn:
+            cursor = database_conn.cursor()
+
         id = request.args.get('id', '')
         query = f'''
             SELECT ID, Name, Titles, ConfTitles, DivTitles FROM teams WHERE ID = {id};
@@ -678,6 +671,6 @@ def get_team_init():
         return {"success": False, "payload":{}}
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, threaded=True)
 
         
