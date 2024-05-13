@@ -201,7 +201,7 @@ def get_player_career():
             games_query = f'''
                 SELECT pts, reb, oreb, dreb, ast, stl, blk, tov, pf, fgp, 3pp, ftp
                 FROM playergames
-                JOIN Games on games.id = playergames.gameid
+                JOIN games on games.id = playergames.gameid
                 WHERE PlayerID = {id} AND Season = {season['season']};
             '''
 
@@ -246,9 +246,9 @@ def get_player_pbp():
 
         id = request.args.get('id', '')
         game_query = f'''
-            SELECT DISTINCT GameID, HomeTeam, AwayTeam, Date, Games.Homescore, Games.AwayScore, Quarters
+            SELECT DISTINCT GameID, HomeTeam, AwayTeam, Date, games.Homescore, games.AwayScore, Quarters
             FROM playershots
-            JOIN Games ON games.id = Playershots.gameid
+            JOIN games ON games.id = playershots.gameid
             WHERE playerid = {id};
         '''
         cursor.execute(game_query)
@@ -271,7 +271,7 @@ def get_player_pbp():
                 "date": formatted_date,
             }
             shot_query = f'''
-                SELECT X, Y, Time, Miss, Playershots.HomeScore, Playershots.AwayScore, Distance, Type
+                SELECT X, Y, Time, Miss, playershots.HomeScore, playershots.AwayScore, Distance, Type
                 FROM playershots
                 JOIN games on games.id = playershots.gameid
                 WHERE gameid = {game[0]}
