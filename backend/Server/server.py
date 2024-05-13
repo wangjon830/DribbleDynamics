@@ -13,6 +13,10 @@ from sklearn.preprocessing import StandardScaler
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+
 @app.route('/get_players', methods=['GET'])
 def get_players():
     try:
@@ -28,7 +32,7 @@ def get_players():
 
         query = f'''
             SELECT ID, Name, min_year, max_year, teams, relevance
-            FROM Players 
+            FROM players 
             JOIN (
                 SELECT playerid, MIN(year) AS min_year, MAX(year) AS max_year
                 FROM playerseasons
@@ -91,7 +95,7 @@ def get_player_init():
                 SUM(FGM) / NULLIF(SUM(FGA),0) AS FGP,
                 SUM(3PM) / NULLIF(SUM(3PA),0) AS FG3P,
                 SUM(FTM) / NULLIF(SUM(FTA),0) AS FTP
-            FROM Playergames
+            FROM playergames
             JOIN (
                 SELECT id, name
                 FROM players
@@ -196,7 +200,7 @@ def get_player_career():
             }
             games_query = f'''
                 SELECT pts, reb, oreb, dreb, ast, stl, blk, tov, pf, fgp, 3pp, ftp
-                FROM PlayerGames
+                FROM playergames
                 JOIN Games on games.id = playergames.gameid
                 WHERE PlayerID = {id} AND Season = {season['season']};
             '''
@@ -243,7 +247,7 @@ def get_player_pbp():
         id = request.args.get('id', '')
         game_query = f'''
             SELECT DISTINCT GameID, HomeTeam, AwayTeam, Date, Games.Homescore, Games.AwayScore, Quarters
-            FROM Playershots
+            FROM playershots
             JOIN Games ON games.id = Playershots.gameid
             WHERE playerid = {id};
         '''
@@ -671,6 +675,6 @@ def get_team_init():
         return {"success": False, "payload":{}}
 
 if __name__ == '__main__':
-    app.run(debug=True, threaded=True)
+    app.run(host="0.0.0.0", port=8000, debug=True, threaded=True)
 
         
