@@ -36,17 +36,7 @@ function Navbar() {
     const [isInfoVisible, setIsInfoVisible] = useState(false);
     const toggleInfoOff = () => setIsInfoVisible(false);
     const toggleInfoOn = () => setIsInfoVisible(true);
-
-    // Manage player dropdown visibility
-    const [isPlayerVisible, setIsPlayerVisible] = useState(false);
-    const togglePlayerOff = () => setIsPlayerVisible(false);
-    const togglePlayerOn = () => setIsPlayerVisible(true);
-
-    // Manage player dropdown visibility
-    const [isTeamVisible, setIsTeamVisible] = useState(false);
-    const toggleTeamOff = () => setIsTeamVisible(false);
-    const toggleTeamOn = () => setIsTeamVisible(true);
-
+    
     function PlayerProfileInfo() {
         return (
             <div id='nav-info' className='col-1 nav-link' onMouseEnter={toggleInfoOn} onMouseLeave={toggleInfoOff} >
@@ -82,49 +72,21 @@ function Navbar() {
         <div id="navbar" className='container sticky'>
             <div className="nav-main row">
                 <div className='col-4' />
-                <div id='nav-player' className='col-1 nav-link' onMouseEnter={togglePlayerOn} onMouseLeave={togglePlayerOff} >
+                <Link id='nav-player' className='col-1 nav-link' to="/playerList">
                     <div className='nav-text nav-sub-text'>
                         <p>Players</p>
                     </div>
-                    {isPlayerVisible && 
-                        <div className="player-menu">
-                            <Link id='navPlayerList' to="/playerList">
-                                <div id="player-link-1" className='menu-link'>
-                                    <p>Player Profiles</p>
-                                </div>
-                            </Link>
-                            <Link id='navPlayerPortal' to="/playerPortal">
-                                <div id="player-link-2" className='menu-link'>
-                                    <p>Player Portal</p>
-                                </div>
-                            </Link>
-                        </div>
-                    }
-                </div>
+                </Link>
                 <Link id='nav-home' className='col-2 nav-link' to="/">
                     <div className='nav-text nav-main-text'>
                         <p>Dribble <br /> Dynamics</p>
                     </div>
                 </Link>
-                <div id='nav-team' className='col-1 nav-link' onMouseEnter={toggleTeamOn} onMouseLeave={toggleTeamOff} >
+                <Link id='nav-team' className='col-1 nav-link' to="/teamList">
                     <div className='nav-text nav-sub-text'>
                         <p>Teams</p>
                     </div>
-                    {isTeamVisible && 
-                        <div className="player-menu">
-                            <Link id='navTeanList' to="/teamList">
-                                <div id="team-link-1" className='menu-link'>
-                                    <p>Team Profiles</p>
-                                </div>
-                            </Link>
-                            <Link id='navTeamPortal' to="/teamPortal">
-                                <div id="team-link-2" className='menu-link'>
-                                    <p>Team Portal</p>
-                                </div>
-                            </Link>
-                        </div>
-                    }
-                </div>
+                </Link>
                 <div className='col-2' />
                 {pageType === 'playerProfile' ? 
                     PlayerProfileInfo()
